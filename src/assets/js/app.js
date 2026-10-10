@@ -91,27 +91,49 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // Hiệu ứng Scroll Reveal chuyên nghiệp khi cuộn xuống
 document.addEventListener('DOMContentLoaded', () => {
-  const revealElements = document.querySelectorAll('.reveal-item');
+  const slider = document.getElementById('caseSlider');
+  if (!slider) return;
 
-  if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          // Thêm độ trễ (stagger) cho từng khối tròn trồi lên mượt mà
-          setTimeout(() => {
-            entry.target.classList.add('is-visible');
-          }, index * 120);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      root: null,
-      threshold: 0.15 // Kích hoạt khi thấy 15% phần tử
-    });
+  // 1. Cho phép lăn chuột dọc (hoặc trackpad) để cuộn ngang các case study
+  slider.addEventListener('wheel', (e) => {
+    // Nếu người dùng đang cuộn ngang hoặc cuộn dọc nằm trong vùng slider
+    if (e.deltaY !== 0) {
+      // Kiểm tra nếu chưa cuộn hết sang phải hoặc trái thì chặn scroll dọc của trang để trượt ngang trước
+      const isAtStart = slider.scrollLeft === 0 && e.deltaY < 0;
+      const isAtEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1 && e.deltaY > 0;
+      
+      if (!isAtStart && !isAtEnd) {
+        e.preventDefault();
+        slider.scrollLeft += e.deltaY * 1.5;
+      }
+    }
+  }, { passive: false });
 
-    revealElements.forEach(el => revealObserver.observe(el));
-  } else {
-    // Fallback cho trình duyệt cũ
-    revealElements.forEach(el => el.classList.add('is-visible'));
-  }
+  // 2. Hỗ trợ nắm kéo chuột (Drag-to-Scroll)
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeft - walk;
+  });
 });
