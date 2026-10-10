@@ -265,3 +265,119 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 .pl{display:grid;gap:1rem;padding-bottom:3rem}
 @media(max-width:860px){.fg{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.fg{grid-template-columns:1fr}}
+/* ===== Custom Section: About Us (Who Am I Layout) ===== */
+.about-hero {
+    padding: 6rem 0;
+}
+.about-top-tag {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--mut);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+}
+.about-main-title {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    margin-bottom: 3.5rem;
+    font-weight: 800;
+}
+.about-main-title span {
+    background: linear-gradient(135deg, #C53030 0%, #9C4221 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.about-grid-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1.3fr;
+    gap: 4rem;
+    align-items: start;
+}
+.about-photo-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 28px;
+    padding: 1rem;
+    box-shadow: 0 16px 40px rgba(15,23,42,0.08);
+    transform: rotate(-1.5deg);
+    transition: transform 0.3s ease;
+}
+.about-photo-card:hover {
+    transform: rotate(0deg);
+}
+.about-photo-card img {
+    width: 100%;
+    height: auto;
+    max-height: 440px;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+}
+.about-author-info {
+    margin-top: 1.2rem;
+    padding-left: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.about-author-info h4 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--tx);
+}
+.about-author-info p {
+    font-size: 0.9rem;
+    color: var(--mut);
+    margin: 0;
+}
+.about-bio-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--mut);
+    margin-bottom: 3rem;
+}
+.about-exp-table {
+    display: flex;
+    flex-direction: column;
+}
+.exp-row {
+    display: grid;
+    grid-template-columns: 1.3fr 1.2fr 1fr;
+    gap: 1rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+    font-size: 0.95rem;
+}
+.exp-row:first-child {
+    border-top: 1px solid var(--line);
+}
+.exp-role {
+    font-weight: 700;
+    color: var(--tx);
+}
+.exp-company {
+    color: var(--mut);
+}
+.exp-time {
+    text-align: right;
+    font-weight: 600;
+    background: linear-gradient(135deg, #C53030 0%, #9C4221 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@media(max-width: 900px) {
+    .about-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .exp-row {
+        grid-template-columns: 1fr;
+        gap: 0.2rem;
+        padding: 1rem 0;
+    }
+    .exp-time {
+        text-align: left;
+    }
+}
