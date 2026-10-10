@@ -130,12 +130,43 @@ ${blk(c.les)}
 
 /* ---------- quyền riêng tư, 404, blog ---------- */
 page("/quyen-rieng-tu", shell({ title: `Quyền riêng tư | ${C.name}`, desc: `Cách ${C.name} thu thập và sử dụng thông tin bạn gửi qua biểu mẫu liên hệ.`, path: "/quyen-rieng-tu" }, `<div class="wrap narrow pg"><h1>Quyền riêng tư</h1>
-<p>Trang này giải thích cách trang web xử lý thông tin bạn gửi qua biểu mẫu liên hệ.</p>
-<h2>Thông tin được thu thập</h2><p>Họ tên, email, chủ đề và nội dung tin nhắn mà bạn tự nhập vào biểu mẫu. Trang web không dùng cookie theo dõi quảng cáo.</p>
-<h2>Mục đích sử dụng</h2><p>Chỉ dùng để phản hồi liên hệ và trao đổi về cơ hội hợp tác. Thông tin không được bán hoặc chia sẻ cho bên thứ ba vì mục đích quảng cáo.</p>
-<h2>Nơi lưu trữ và thời gian lưu</h2><p>Tin nhắn được lưu trong cơ sở dữ liệu có kiểm soát truy cập và được xóa định kỳ khi không còn cần thiết.</p>
-<h2>Quyền của bạn</h2><p>Bạn có thể yêu cầu xem, sửa hoặc xóa thông tin của mình bằng cách gửi email tới <a href="mailto:${E(C.email)}"><u>${E(C.email)}</u></a>.</p>
-<h2>Bộ nhớ trình duyệt</h2><p>Trang web lưu một mốc thời gian nhỏ trong trình duyệt để hạn chế gửi tin nhắn lặp trong vòng một phút.</p></div>`));
+<p><b>CHÍNH SÁCH QUYỀN RIÊNG TƯ</b></p>
+
+<h2>1. Phạm vi và Mục đích thu thập thông tin</h2>
+<ul>
+    <li>
+        Trang web thu thập các thông tin cá nhân do người dùng <b>chủ động cung cấp</b> qua biểu mẫu liên hệ, bao gồm: <b>Họ và tên</b>, <b>địa chỉ email</b>, <b>chủ đề</b> và <b>nội dung tin nhắn</b>.
+    </li>
+    <li>
+        Thông tin này được sử dụng <b>độc quyền</b> nhằm mục đích phản hồi các yêu cầu liên hệ, giải đáp thắc mắc và trao đổi về các <b>cơ hội hợp tác nghề nghiệp</b>.
+    </li>
+    <li>
+        Website cam kết <b>không sử dụng cookie theo dõi quảng cáo</b>, đồng thời <b>không bán, trao đổi hoặc chia sẻ</b> thông tin cá nhân của người dùng với bất kỳ bên thứ ba nào vì mục đích thương mại.
+    </li>
+</ul>
+
+<h2>2. Lưu trữ và Bảo mật dữ liệu</h2>
+<ul>
+    <li>
+        Dữ liệu tin nhắn liên hệ được <b>lưu trữ an toàn</b> trong cơ sở dữ liệu có áp dụng các biện pháp kiểm soát truy cập nghiêm ngặt.
+    </li>
+    <li>
+        Thông tin sẽ được <b>rà soát và xóa định kỳ</b> khi không còn cần thiết cho mục đích trao đổi hoặc theo yêu cầu hợp pháp của người dùng.
+    </li>
+    <li>
+        <b>Lưu trữ trình duyệt (Local Storage):</b> Website lưu trữ tạm thời một mốc thời gian (timestamp) trên trình duyệt của người dùng nhằm mục đích kỹ thuật thuần túy: <b>giới hạn tần suất gửi tin nhắn lặp lại</b> (tối thiểu cách nhau 01 phút) nhằm ngăn chặn spam.
+    </li>
+</ul>
+
+<h2>3. Quyền lợi của người dùng</h2>
+<ul>
+    <li>
+        Người dùng có toàn quyền <b>yêu cầu truy cập, chỉnh sửa hoặc xóa bỏ</b> thông tin cá nhân của mình bất kỳ lúc nào.
+    </li>
+    <li>
+        Mọi yêu cầu liên quan đến quyền riêng tư hoặc cần hỗ trợ, vui lòng gửi email trực tiếp về địa chỉ: <b>lephucsinh82@gmail.com</b>.
+    </li>
+</ul>
 write("/404.html", shell({ title: `Không tìm thấy trang | ${C.name}`, desc: "Trang bạn tìm không tồn tại.", path: "/404", noindex: true }, `<div class="wrap narrow pg"><h1>Không tìm thấy trang</h1><p>Đường dẫn có thể đã thay đổi. Hãy quay về <a href="/"><u>trang chủ</u></a> hoặc xem các <a href="/#cases"><u>case study</u></a>.</p></div>`));
 if (posts.length) {
   page("/blog", shell({ title: `Blog | ${C.name}`, desc: `Bài viết về ${C.role} của ${C.name}.`, path: "/blog", ld: [crumbs([["Trang chủ", "/"], ["Blog", "/blog"]])] },
