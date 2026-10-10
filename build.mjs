@@ -142,6 +142,53 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
         </div>
     </div>
 </section>
+<!-- ===== Section: Manifesto & Metrics (Ngay dưới About Us) ===== -->
+<section class="sec-manifesto" id="manifesto">
+  <div class="wrap manifesto-wrap">
+    
+    <!-- Các phần tử thủy tinh 3D Trang trí (Decor Elements) -->
+    <div class="glass-shape shape-crescent float-anim-1" aria-hidden="true"></div>
+    <div class="glass-shape shape-cone float-anim-2" aria-hidden="true"></div>
+    <div class="glass-shape shape-cube float-anim-3" aria-hidden="true"></div>
+
+    <!-- Tiêu đề phân dải màu nghệ thuật -->
+    <h2 class="manifesto-title reveal-item">
+      <span class="txt-muted">We believe</span><br>
+      in the power of creativity<br>
+      to <span class="txt-muted">transform brands</span>
+    </h2>
+
+    <!-- Lưới 4 Khối tròn Thống kê (Bubble Stats) -->
+    <div class="metrics-bubble-container">
+      
+      <!-- Khối 1: 10+ -->
+      <div class="metric-bubble bubble-1 reveal-item">
+        <span class="num">10+</span>
+        <p class="desc">years delivering<br>marketing excellence</p>
+      </div>
+
+      <!-- Khối 2: 1.2K -->
+      <div class="metric-bubble bubble-2 reveal-item">
+        <span class="num">1.2K</span>
+        <p class="desc">successful campaigns<br>launched globally</p>
+      </div>
+
+      <!-- Khối 3: 500+ -->
+      <div class="metric-bubble bubble-3 reveal-item">
+        <span class="num">500+</span>
+        <p class="desc">brands trust us to<br>grow their business</p>
+      </div>
+
+      <!-- Khối 4: 75% -->
+      <div class="metric-bubble bubble-4 reveal-item">
+        <span class="num">75%</span>
+        <p class="desc">average ROI increase<br>for our clients</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 <section class="sec" id="skills"><div class="wrap"><h2>${E(C.heads.skills[0])}</h2><p class="sub">${E(C.heads.skills[1])}</p>
 <div class="grid3">${C.skills.map(s => `<div class="box"><h3>${E(s[0])}</h3><p>${E(s[1])}</p></div>`).join("")}</div></div></section>
 <section class="sec" id="projects"><div class="wrap"><h2>${E(C.heads.projects[0])}</h2><p class="sub">${E(C.heads.projects[1])}</p>
