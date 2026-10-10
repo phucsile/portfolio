@@ -129,7 +129,8 @@ ${blk(c.les)}
 });
 
 /* ---------- quyền riêng tư, 404, blog ---------- */
-page("/quyen-rieng-tu", shell({ title: `Quyền riêng tư | ${C.name}`, desc: `Cách ${C.name} thu thập và sử dụng thông tin bạn gửi qua biểu mẫu liên hệ.`, path: "/quyen-rieng-tu" }, `<div class="wrap narrow pg"><h1>Quyền riêng tư</h1>
+page("/quyen-rieng-tu", shell({ title: `Quyền riêng tư | ${C.name}`, desc: `Cách ${C.name} thu thập và sử dụng thông tin bạn gửi qua biểu mẫu liên hệ.`, path: "/quyen-rieng-tu" }, `<div class="wrap narrow pg" style="max-width: 800px; margin: 0 auto; padding: 3rem 1.25rem;">
+<h1 style="margin-bottom: 1.5rem;">Quyền riêng tư</h1>
 <p><b>CHÍNH SÁCH QUYỀN RIÊNG TƯ</b></p>
 <h2>1. Phạm vi và Mục đích thu thập thông tin</h2>
 <ul>
@@ -147,7 +148,8 @@ page("/quyen-rieng-tu", shell({ title: `Quyền riêng tư | ${C.name}`, desc: `
 <ul>
     <li>Người dùng có toàn quyền <b>yêu cầu truy cập, chỉnh sửa hoặc xóa bỏ</b> thông tin cá nhân của mình bất kỳ lúc nào.</li>
     <li>Mọi yêu cầu liên quan đến quyền riêng tư hoặc cần hỗ trợ, vui lòng gửi email trực tiếp về địa chỉ: <b>lephucsinh82@gmail.com</b>.</li>
-</ul></div>`));
+</ul>
+</div>`));
 
 write("/404.html", shell({ title: `Không tìm thấy trang | ${C.name}`, desc: "Trang bạn tìm không tồn tại.", path: "/404", noindex: true }, `<div class="wrap narrow pg"><h1>Không tìm thấy trang</h1><p>Đường dẫn có thể đã thay đổi. Hãy quay về <a href="/"><u>trang chủ</u></a> hoặc xem các <a href="/#cases"><u>case study</u></a>.</p></div>`));
 
