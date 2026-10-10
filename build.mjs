@@ -148,7 +148,7 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
 <div class="grid3">${C.projects.map(p => `<a class="box pcard" href="${href(CASES[p.ref])}"><div class="top"><div class="lg">${p.logo ? im(p.logo, "", 200, 200) : "Logo"}</div><span class="tg">${E(p.tag)}</span></div><h3>${E(p.t)}</h3><p>${E(p.d)}</p>${kp(p.k)}<span class="more">Xem dự án</span></a>`).join("")}</div></div></section>
 <section class="sec cases-split-sec" id="cases">
   <div class="wrap cases-split-wrap">
-    <!-- CỘT TRÁI: Tag màu + Tiêu đề + Nút CTA -->
+    <!-- CỘT TRÁI: Tag badge + Title + Subtitle + Nút CTA -->
     <div class="cases-left-col">
       <span class="cases-badge">CASE STUDY NỔI BẬT</span>
       <h2 class="cases-heading">Câu chuyện đằng sau các con số</h2>
@@ -156,21 +156,30 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
       <a class="btn fill cases-cta-btn" href="#contact">Khám phá chi tiết &rarr;</a>
     </div>
 
-    <!-- CỘT PHẢI: Khối chứa các thẻ Card tràn ngang (Scroll/Grid) -->
+    <!-- CỘT PHẢI: Khối Carousel cuộn ngang có vết mờ & nút cuộn -->
     <div class="cases-right-col">
-      <div class="cases-cards-scroll">
+      <!-- Lớp phủ mờ dần ở mép phải (Fade Overlay) -->
+      <div class="cases-fade-overlay"></div>
+      
+      <!-- Nút bấm mũi tên qua bài tiếp theo -->
+      <button class="cases-scroll-btn" id="caseScrollNext" aria-label="Xem case study tiếp theo">
+        <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <!-- Danh sách các Card xếp hàng ngang -->
+      <div class="cases-cards-slider" id="caseSlider">
         ${cases.map((c, i) => `
           <a class="box pcard case-card-item" href="${href(c)}">
-            <div class="cimg">${c.cover ? im(c.cover, c.title, 1600, 686) : ""}</div>
-            <div class="case-card-body">
+            <div class="case-card-inner">
+              <div class="cimg">${c.cover ? im(c.cover, c.title, 1600, 686) : ""}</div>
               <span class="tg">${E(c.tag)}</span>
               <h3>${E(c.title)}</h3>
               <p>${E(c.summary)}</p>
               ${kp(c.kpi)}
-              <div class="case-card-footer">
-                <span class="case-step-label">Case 0${i + 1}</span>
-                <span class="more">Đọc case study &rarr;</span>
-              </div>
+            </div>
+            <div class="case-card-footer">
+              <span class="case-step-label">Step ${i + 1}</span>
+              <span class="more">Đọc case study &rarr;</span>
             </div>
           </a>
         `).join("")}
