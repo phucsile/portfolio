@@ -142,45 +142,41 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
         </div>
     </div>
 </section>
-<!-- ===== Section: Manifesto & Metrics (Ngay dưới About Us) ===== -->
+<!-- ===== Section: Manifesto & Metrics (Gọn gàng trong 1 khung nhìn) ===== -->
 <section class="sec-manifesto" id="manifesto">
   <div class="wrap manifesto-wrap">
     
-    <!-- Các phần tử thủy tinh 3D Trang trí (Decor Elements) -->
+    <!-- Các khối thủy tinh 3D Trang trí (Đã làm nghệ thuật & lơ lửng) -->
     <div class="glass-shape shape-crescent float-anim-1" aria-hidden="true"></div>
     <div class="glass-shape shape-cone float-anim-2" aria-hidden="true"></div>
     <div class="glass-shape shape-cube float-anim-3" aria-hidden="true"></div>
 
-    <!-- Tiêu đề phân dải màu nghệ thuật -->
-    <h2 class="manifesto-title reveal-item">
+    <!-- Tiêu đề chính -->
+    <h2 class="manifesto-title">
       <span class="txt-muted">We believe</span><br>
       in the power of creativity<br>
       to <span class="txt-muted">transform brands</span>
     </h2>
 
-    <!-- Lưới 4 Khối tròn Thống kê (Bubble Stats) -->
+    <!-- Lưới 4 Khối tròn Thống kê nằm gọn gàng, cân đối -->
     <div class="metrics-bubble-container">
       
-      <!-- Khối 1: 10+ -->
-      <div class="metric-bubble bubble-1 reveal-item">
+      <div class="metric-bubble bubble-1">
         <span class="num">10+</span>
         <p class="desc">years delivering<br>marketing excellence</p>
       </div>
 
-      <!-- Khối 2: 1.2K -->
-      <div class="metric-bubble bubble-2 reveal-item">
+      <div class="metric-bubble bubble-2">
         <span class="num">1.2K</span>
         <p class="desc">successful campaigns<br>launched globally</p>
       </div>
 
-      <!-- Khối 3: 500+ -->
-      <div class="metric-bubble bubble-3 reveal-item">
+      <div class="metric-bubble bubble-3">
         <span class="num">500+</span>
         <p class="desc">brands trust us to<br>grow their business</p>
       </div>
 
-      <!-- Khối 4: 75% -->
-      <div class="metric-bubble bubble-4 reveal-item">
+      <div class="metric-bubble bubble-4">
         <span class="num">75%</span>
         <p class="desc">average ROI increase<br>for our clients</p>
       </div>
