@@ -44,11 +44,14 @@ body>nav .wrap{max-width:1160px;margin:0 auto;padding:0 1.25rem;height:64px;disp
 .dd a:hover, 
 .dd a[aria-current] {
     background: linear-gradient(135deg, #C53030 0%, #9C4221 100%) !important;
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
-    font-weight: 500;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
 }
 #burger{display:none;background:rgba(255,255,255,.6);border:1px solid var(--line);color:var(--tx);border-radius:999px;padding:.45rem 1rem;font:inherit;font-size:.88rem;cursor:pointer}
 @media(max-width:1000px){
