@@ -313,15 +313,20 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     flex-direction: column;
 }
 
-/* Khung ảnh bo góc lớn và xoay nhẹ -2deg */
+/* Khung chứa ảnh nghiêng nghệ thuật */
 .about-photo-card {
-    background: #0F172A;
-    border-radius: 20px;
-    padding: 6px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    position: relative;
+    background: #0A0F1D;            /* Nền tối trùng màu sắc chủ đạo */
+    border-radius: 24px;
+    padding: 0;                     /* Loại bỏ padding để ảnh tràn vừa khít viền bo */
+    overflow: hidden;               /* Bắt buộc cắt bỏ phần ảnh vượt ra ngoài khung bo góc */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     transform: rotate(-2deg);
     transition: transform 0.3s ease;
-    overflow: hidden;
+    aspect-ratio: 4 / 3;            /* Cố định tỷ lệ khung chuẩn như hình mẫu */
+    display: flex;
+    align-items: flex-end;          /* Căn ảnh bám sát vào đáy box */
+    justify-content: center;
 }
 
 .about-photo-card:hover {
@@ -330,12 +335,11 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 
 .about-photo-card img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    border-radius: 16px;
+    height: 100%;
+    object-fit: cover;              /* Giúp ảnh tự động bao phủ trọn vẹn box mà không bị méo */
+    object-position: center top;    /* Ưu tiên giữ lại phần đầu và mặt cá nhân ở trên */
     display: block;
-    filter: grayscale(20%); /* Tăng độ nghệ thuật cho ảnh */
+    border-radius: inherit;         /* Thừa hưởng góc bo của box cha */
 }
 
 /* Tên & Chức danh đặt ở góc dưới bên phải dưới ảnh */
