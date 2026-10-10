@@ -1,7 +1,7 @@
 /* TOÀN BỘ NỘI DUNG CỦA TRANG NẰM Ở ĐÂY. Mọi chữ, số, ảnh bên dưới là NỘI DUNG MẪU để xem trước. Khi dùng thật: thay nội dung và đặt demo:false. */
 export const SB={url:"https://YOUR_PROJECT_REF.supabase.co",key:"YOUR_PUBLISHABLE_KEY"};
 export const C={
- demo:true,
+ demo:false,
  url:"https://portfolio-sile.vercel.app/",
  desc:"Omnichannel Marketing Lead trong lĩnh vực Healthcare và Biotech: hành trình khách hàng, dữ liệu khép kín và tuân thủ y khoa.",
  tagline:"Omnichannel Marketing cho Healthcare và Biotech: biến tín hiệu của bác sĩ và khách hàng thành hành động đo được.",
