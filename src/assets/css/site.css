@@ -1,35 +1,12 @@
-/* --- Khai báo font từ Supabase Storage --- */
-@font-face {
-    font-family: 'MyCustomFont';
-    src: url('https://avuggemsmyuuhfdnuyuj.supabase.co/storage/v1/object/public/portfolio/Font/ten-file-font.woff2') format('woff2'),
-         url('https://avuggemsmyuuhfdnuyuj.supabase.co/storage/v1/object/public/portfolio/Font/ten-file-font.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Nếu bạn có thêm font cho chữ đậm (Bold / Weight 700, 800), khai báo thêm: */
-@font-face {
-    font-family: 'MyCustomFont';
-    src: url('https://avuggemsmyuuhfdnuyuj.supabase.co/storage/v1/object/public/portfolio/Font/ten-file-font-bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
 /* ===== Nền tảng dùng chung: nền trắng, thanh điều hướng, kính lỏng kiểu Apple ===== */
-:root {
-    /* Thay thế font mặc định cũ thành font của bạn */
-    --font-main: 'MyCustomFont', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-body {
-    font-family: var(--font-main);
-}
-
-/* Đảm bảo tất cả tiêu đề, nút bấm, ô nhập liệu đều nhận font mới */
-h1, h2, h3, h4, h5, h6, button, input, textarea {
-    font-family: var(--font-main);
-}
+:root{color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px;overflow-x:clip}
+body{--bg:#FFF;--bg2:#F1F5F9;--tx:#0F172A;--mut:#475569;--line:rgba(15,23,42,.14);--em:#047857;--gold:#B45309;margin:0;background:var(--bg);color:var(--tx);font:300 1rem/1.6 Inter,"SF Pro Text",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-weight:800;letter-spacing:-.02em;line-height:1.12;margin:0}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--em);outline-offset:3px}
+.btn{display:inline-block;padding:.7rem 1.3rem;border-radius:999px;border:1px solid var(--em);color:var(--em);font-weight:700;font-size:.9rem;transition:background .2s,color .2s}
 /* Tùy chỉnh nút Hợp tác theo tông màu Đỏ - Nâu (Mệnh Thổ) */
 .menu .btn.fill, 
 body>nav .menu a.btn.fill {
