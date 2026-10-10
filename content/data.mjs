@@ -2,7 +2,7 @@
 export const SB={url:"https://YOUR_PROJECT_REF.supabase.co",key:"YOUR_PUBLISHABLE_KEY"};
 export const C={
  demo:true,
- url:"https://your-domain.vercel.app",
+ url:"https://portfolio-sile.vercel.app/",
  desc:"Omnichannel Marketing Lead trong lĩnh vực Healthcare và Biotech: hành trình khách hàng, dữ liệu khép kín và tuân thủ y khoa.",
  tagline:"Omnichannel Marketing cho Healthcare và Biotech: biến tín hiệu của bác sĩ và khách hàng thành hành động đo được.",
  ogImage:"/assets/img/og.png",
@@ -33,8 +33,8 @@ export const C={
   {tag:"B2B",t:"Chiến lược lead cho phân phối",d:"Phân khúc đại lý, chấm điểm lead và chuỗi chăm sóc.",href:"#"},
   {tag:"Tổng hợp",t:"Kế hoạch marketing năm",d:"Mục tiêu, kênh và chỉ số theo từng quý.",href:"#"}],
  certs:[["Google Analytics","#"],["Meta Certified Digital Marketing Associate","#"],["HubSpot Inbound Marketing","#"],["Quản trị dự án cơ bản","#"]],
- contact:{h:"Cùng xây dựng hành trình khách hàng tiếp theo",note:"Mình đang tìm vị trí Omnichannel Marketing Lead hoặc Customer Engagement Lead trong ngành dược và công nghệ sinh học. Cũng nhận dự án tư vấn ngắn hạn.",
-  phone:"+84 900 000 000",loc:"TP. Hồ Chí Minh, Việt Nam",
+ contact:{h:"Cùng xây dựng hành trình khách hàng tiếp theo",
+  phone:"+84 38 9593 036",loc:"TP. Hồ Chí Minh, Việt Nam",
   social:[{n:"LinkedIn",m:"in",u:"https://www.linkedin.com/"},{n:"Facebook",m:"f",u:"https://www.facebook.com/"},{n:"Zalo",m:"Z",u:"https://zalo.me/"},]}
 };
 /* Mỗi phần tử của CASES là một trang case study: mở bằng case.html?c=0, c=1, c=2... Sao chép một khối để thêm case mới. */
