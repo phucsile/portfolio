@@ -654,29 +654,29 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
         flex: 0 0 85vw;
     }
 }
-/* ===== Layout Section: Manifesto & Metrics ===== */
+/* ===== Layout Section: Manifesto & Metrics (Tối ưu gọn gàng & Lơ lửng) ===== */
 .sec-manifesto {
     position: relative;
-    padding: 7rem 0 9rem;
+    padding: 5rem 0 6rem;
     overflow: hidden;
     background: transparent;
 }
 
 .manifesto-wrap {
     position: relative;
-    max-width: 1200px;
+    max-width: 1160px;
     margin: 0 auto;
 }
 
-/* --- Tiêu đề phân màu --- */
+/* --- Tiêu đề --- */
 .manifesto-title {
-    font-size: clamp(2.5rem, 5.2vw, 4.2rem);
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
     font-weight: 800;
     line-height: 1.15;
     color: #0F172A;
     text-align: center;
     letter-spacing: -0.03em;
-    margin-bottom: 5rem;
+    margin-bottom: 3.5rem;
 }
 
 .manifesto-title .txt-muted {
@@ -684,166 +684,134 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     font-weight: 400;
 }
 
-/* --- Lưới bố cục Bọt tròn (Bubble Metrics) --- */
+/* --- Lưới Bọt tròn (Bubble Metrics) nằm chung trong 1 khung gọn --- */
 .metrics-bubble-container {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
-    min-height: 380px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    gap: 1rem;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1rem 0;
 }
 
-/* Quy tắc dáng hình tròn chung */
+/* Quy tắc chung các khối tròn số liệu */
 .metric-bubble {
-    background: rgba(255, 255, 255, 0.65);
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.04), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05), inset 0 2px 6px rgba(255, 255, 255, 0.9);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    flex-shrink: 0;
 }
 
 .metric-bubble:hover {
-    transform: translateY(-8px) scale(1.03) !important;
-    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08), inset 0 2px 4px rgba(255, 255, 255, 1);
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 25px 50px rgba(15, 23, 42, 0.09), inset 0 2px 6px rgba(255, 255, 255, 1);
 }
 
 .metric-bubble .num {
-    font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+    font-size: clamp(2rem, 3vw, 2.8rem);
     font-weight: 800;
     color: #0F172A;
     line-height: 1;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
 }
 
 .metric-bubble .desc {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     color: #64748B;
     line-height: 1.35;
     margin: 0;
     font-weight: 500;
+    padding: 0 1rem;
 }
 
-/* Vị trí chuẩn 100% theo ảnh mẫu */
-.bubble-1 {
-    grid-column: 2 / span 3;
-    width: 250px;
-    height: 250px;
-    margin-top: -40px;
-}
+/* Kích thước & độ lệch vị trí so le nhẹ nhàng để không bị tràn màn hình */
+.bubble-1 { width: 220px; height: 220px; transform: translateY(15px); }
+.bubble-2 { width: 240px; height: 240px; transform: translateY(-20px); }
+.bubble-3 { width: 230px; height: 230px; transform: translateY(20px); }
+.bubble-4 { width: 225px; height: 225px; transform: translateY(-10px); }
 
-.bubble-2 {
-    grid-column: 4 / span 4;
-    width: 290px;
-    height: 290px;
-    margin-top: 60px;
-    margin-left: 20px;
-}
-
-.bubble-3 {
-    grid-column: 7 / span 4;
-    width: 270px;
-    height: 270px;
-    margin-top: -60px;
-    margin-left: 30px;
-}
-
-.bubble-4 {
-    grid-column: 10 / span 3;
-    width: 260px;
-    height: 260px;
-    margin-top: 100px;
-}
-
-/* --- Các phần tử Thủy tinh 3D (3D Glassmorphism Shapes) --- */
+/* --- Các khối Thủy tinh 3D nghệ thuật & Hiệu ứng Lơ lửng (Floating) --- */
 .glass-shape {
     position: absolute;
     pointer-events: none;
     z-index: 2;
 }
 
-/* Bán nguyệt bên trái */
+/* Khối vành bán nguyệt (Crescent Ring) phía trên trái */
 .shape-crescent {
-    top: 0px;
-    left: -40px;
-    width: 220px;
-    height: 220px;
+    top: -20px;
+    left: 20px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    background: conic-gradient(from 180deg at 50% 50%, #C53030 0deg, #9C4221 120deg, #60A5FA 240deg, #E0E7FF 360deg);
-    -webkit-mask: radial-gradient(farthest-side, transparent 55%, #000 56%);
-    mask: radial-gradient(farthest-side, transparent 55%, #000 56%);
-    opacity: 0.85;
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+    background: conic-gradient(from 180deg at 50% 50%, #C53030 0deg, #9C4221 100deg, #60A5FA 240deg, #E0E7FF 360deg);
+    -webkit-mask: radial-gradient(farthest-side, transparent 62%, #000 63%);
+    mask: radial-gradient(farthest-side, transparent 62%, #000 63%);
+    opacity: 0.9;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.12));
 }
 
-/* Chóp nón trung tâm */
+/* Khối chóp nón (Cone) ở giữa */
 .shape-cone {
-    top: 48%;
-    left: 51%;
-    width: 65px;
-    height: 65px;
-    background: radial-gradient(circle at 30% 30%, #E0E7FF, #818CF8 60%, #4338CA);
+    top: 45%;
+    left: 48%;
+    width: 45px;
+    height: 45px;
+    background: radial-gradient(circle at 35% 35%, #FFFFFF, #818CF8 55%, #3730A3);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    border-radius: 50% 50% 0 0;
-    opacity: 0.8;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+    border-radius: 40% 40% 0 0;
+    opacity: 0.85;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
 }
 
 /* Khối lập phương góc trên bên phải */
 .shape-cube {
-    top: 20px;
-    right: 0px;
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(165,180,252,0.6));
-    border: 1px solid rgba(255,255,255,0.8);
-    backdrop-filter: blur(10px);
-    transform: rotate(25deg) skew(-10deg);
-    border-radius: 24px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.12), inset 0 0 15px rgba(255,255,255,0.9);
+    top: -10px;
+    right: 40px;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(165,180,252,0.5));
+    border: 1px solid rgba(255,255,255,0.9);
+    backdrop-filter: blur(12px);
+    transform: rotate(20deg) skew(-8deg);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1), inset 0 0 12px rgba(255,255,255,0.95);
 }
 
-/* --- Hiệu ứng Bồng bềnh Floating Animation --- */
-@keyframes floatSoft {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(3deg); }
+/* --- Hiệu ứng Lơ lửng nghệ thuật (Floating Keyframe Animations) --- */
+@keyframes floatGentle {
+    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    50% { transform: translateY(-12px) rotate(4deg) scale(1.02); }
 }
 
-.float-anim-1 { animation: floatSoft 6s ease-in-out infinite; }
-.float-anim-2 { animation: floatSoft 4.5s ease-in-out infinite 0.5s; }
-.float-anim-3 { animation: floatSoft 7s ease-in-out infinite 1s; }
-
-/* --- CSS hiệu ứng Scroll Reveal khi cuộn xuống --- */
-.reveal-item {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+@keyframes floatReverse {
+    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    50% { transform: translateY(10px) rotate(-4deg) scale(0.98); }
 }
 
-.reveal-item.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+.float-anim-1 { animation: floatGentle 5s ease-in-out infinite; }
+.float-anim-2 { animation: floatReverse 4s ease-in-out infinite 0.3s; }
+.float-anim-3 { animation: floatGentle 6s ease-in-out infinite 0.7s; }
 
-/* Responsive cho điện thoại / Tablet */
+/* Responsive cho thiết bị di động */
 @media (max-width: 900px) {
     .metrics-bubble-container {
-        display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 2rem;
+        gap: 1.5rem;
     }
     .metric-bubble {
-        margin: 0 !important;
-        width: 220px !important;
-        height: 220px !important;
+        transform: none !important;
     }
     .glass-shape { display: none; }
 }
