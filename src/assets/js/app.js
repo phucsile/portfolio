@@ -31,3 +31,13 @@ if(d.body.classList.contains("protect")){
  ["contextmenu","copy","cut","dragstart","selectstart"].forEach(x=>d.addEventListener(x,e=>{if(!free(e))e.preventDefault()}));
  d.addEventListener("keydown",e=>{const k=e.key.toLowerCase(),c=e.ctrlKey||e.metaKey;if(k==="f12"||(c&&e.shiftKey&&"ijc".includes(k))||(c&&"usp".includes(k)))e.preventDefault()})}
 })();
+// Bấm nút mũi tên để cuộn qua Case Study tiếp theo
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('caseScrollNext');
+  const slider = document.getElementById('caseSlider');
+  if (btn && slider) {
+    btn.addEventListener('click', () => {
+      slider.scrollBy({ left: 480, behavior: 'smooth' });
+    });
+  }
+});
