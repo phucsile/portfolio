@@ -441,3 +441,171 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
         text-align: left;
     }
 }
+/* ===== Bố cục Layout Case Study 2 Cột (Kiểu Keyvo) ===== */
+.cases-split-sec {
+    padding: 6rem 0;
+    overflow: hidden;
+}
+
+.cases-split-wrap {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 3.5rem;
+    align-items: start;
+    max-width: 1240px;
+}
+
+/* --- Cột trái sticky --- */
+.cases-left-col {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Tag badge hình chữ nhật viền bo góc nền xanh nhạt / nổi bật */
+.cases-badge {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    background: #DCFCE7;
+    color: #15803D;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    border-radius: 6px;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+}
+
+.cases-heading {
+    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.12;
+    color: var(--tx);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.cases-sub-text {
+    font-size: 1.02rem;
+    color: var(--mut);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Nút CTA dưới cột trái màu Gradient Đỏ - Nâu mệnh Thổ */
+.cases-cta-btn {
+    background: linear-gradient(135deg, #C53030 0%, #9C4221 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 0.85rem 1.6rem;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 20px rgba(197, 48, 48, 0.25);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.cases-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(156, 66, 33, 0.4);
+}
+
+/* --- Cột phải: Khối Card cuộn ngang / Grid --- */
+.cases-right-col {
+    width: 100%;
+    min-width: 0;
+}
+
+.cases-cards-scroll {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 1.8rem;
+}
+
+/* Kiểu dáng từng thẻ Card Case Study */
+.case-card-item {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s, border-color 0.3s;
+}
+
+.case-card-item:hover {
+    transform: translateY(-6px);
+    border-color: #C53030;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+}
+
+.case-card-item .cimg {
+    border-radius: 16px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+}
+
+.case-card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.case-card-body .tg {
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #C53030;
+    margin-bottom: 0.4rem;
+}
+
+.case-card-body h3 {
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin-bottom: 0.6rem;
+    color: var(--tx);
+}
+
+.case-card-body p {
+    font-size: 0.92rem;
+    color: var(--mut);
+    line-height: 1.55;
+    margin-bottom: 1.2rem;
+}
+
+.case-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+}
+
+.case-step-label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--tx);
+}
+
+.case-card-footer .more {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #C53030;
+}
+
+/* Responsive cho thiết bị di động & tablet */
+@media (max-width: 960px) {
+    .cases-split-wrap {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .cases-left-col {
+        position: static;
+    }
+    .cases-cards-scroll {
+        grid-template-columns: 1fr;
+    }
+}
