@@ -847,3 +847,84 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     }
     .glass-shape { display: none; }
 }
+/* ===== Responsive Tổng Thể Cho Mobile & Tablet (Dưới 960px) ===== */
+@media (max-width: 960px) {
+    /* Tránh tràn màn hình ngang */
+    body, html {
+        overflow-x: hidden;
+    }
+
+    /* Thu nhỏ khoảng cách lề và khoảng trắng các section */
+    .sec, .sec-manifesto, .cases-split-sec {
+        padding: 4rem 1.25rem !important;
+    }
+
+    .wrap {
+        padding: 0 1rem;
+    }
+
+    /* 1. Phần About & Bảng Kinh Nghiệm */
+    .about-split-wrap, 
+    .cases-split-wrap {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+    }
+
+    /* Bảng kinh nghiệm trên mobile: Chuyển sang xếp dọc hoặc thu hẹp khoảng cách */
+    .exp-row {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        padding: 0.85rem 0.5rem;
+    }
+
+    .exp-time {
+        text-align: left;
+        color: #64748B;
+        font-size: 0.85rem;
+    }
+
+    /* 2. Phần Case Study cuộn ngang trên di động */
+    .cases-right-col {
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+        overflow-x: visible;
+    }
+
+    .cases-cards-slider {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 !important;
+        overflow-x: visible;
+    }
+
+    .case-card-item {
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    /* 3. Phần Manifesto & Metrics (Các khối tròn số liệu) */
+    .manifesto-title {
+        font-size: clamp(2rem, 8vw, 2.8rem) !important;
+        margin-bottom: 2.5rem !important;
+    }
+
+    .metrics-bubble-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
+    }
+
+    .metric-bubble {
+        width: 210px !important;
+        height: 210px !important;
+        transform: none !important;
+        margin: 0 auto !important;
+    }
+
+    /* Ẩn các khối hình 3D phức tạp trên màn hình nhỏ để tránh che nội dung */
+    .glass-shape {
+        display: none !important;
+    }
+}
