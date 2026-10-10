@@ -50,6 +50,7 @@ const head = ({ title, desc, path, type = "website", img = C.ogImage, ld, noinde
 <meta name="robots" content="${noindex ? "noindex,follow" : "index,follow,max-image-preview:large,max-snippet:-1"}">
 <meta name="author" content="${E(C.name)}"><meta name="theme-color" content="#0A0F1D">
 <meta property="og:type" content="${type}"><meta property="og:site_name" content="${E(C.name)}"><meta property="og:locale" content="vi_VN">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta property="og:title" content="${E(title)}"><meta property="og:description" content="${E(desc)}"><meta property="og:url" content="${base}${path}"><meta property="og:image" content="${abs(img)}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${E(title)}"><meta name="twitter:description" content="${E(desc)}"><meta name="twitter:image" content="${abs(img)}">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">${posts.length ? `\n<link rel="alternate" type="application/rss+xml" title="${E(C.name)}" href="/feed.xml">` : ""}
