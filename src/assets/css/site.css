@@ -849,19 +849,46 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 }
 /* ===== Responsive Tổng Thể Cho Mobile & Tablet (Dưới 960px) ===== */
 @media (max-width: 960px) {
-    /* Tránh tràn màn hình ngang */
+    /* Đảm bảo toàn bộ trang không bị tràn ngang và cho phép chạm vuốt tự nhiên */
     body, html {
         overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
     }
 
-    /* Thu nhỏ khoảng cách lề và khoảng trắng các section */
     .sec, .sec-manifesto, .cases-split-sec {
         padding: 4rem 1.25rem !important;
     }
 
-    .wrap {
-        padding: 0 1rem;
+    .cases-split-wrap {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
     }
+
+    /* --- Tối ưu hóa tuyệt đối khu vực Case Study trên Mobile --- */
+    .cases-right-col {
+        width: 100% !important;
+        overflow: visible !important;
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+    }
+
+    .cases-cards-slider {
+        display: flex !important;
+        flex-direction: column !important; /* Xếp dọc các thẻ trên di động để dễ bấm */
+        gap: 1.5rem !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        padding: 0 !important;
+        cursor: default !important;
+    }
+
+    .case-card-item {
+        width: 100% !important;
+        flex: none !important;
+        pointer-events: auto !important; /* Đảm bảo luôn nhận diện thao tác chạm/click của người dùng */
+        cursor: pointer !important;
+    }
+}
 
     /* 1. Phần About & Bảng Kinh Nghiệm */
     .about-split-wrap, 
