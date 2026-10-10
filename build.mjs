@@ -84,13 +84,18 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
 <h1>${E(C.name)}</h1><p class="rl">${E(C.role)}</p>
 <a class="dl" href="${E(C.cv || "#contact")}"${C.cv ? " download" : ""}>Tải CV</a>
 <a class="sc" href="#about" aria-label="Cuộn xuống">CUỘN<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></a></section>
-
 <section class="about-hero" id="about">
     <div class="wrap">
+        <!-- Sub-tag nghiêng kiểu Serif -->
         <div class="about-top-tag">/ Who Am I</div>
-        <h2 class="about-main-title">Hơn 5 năm kiến tạo <span>dấu ấn thương hiệu</span></h2>
+        
+        <!-- Tiêu đề lớn 2 màu (Chữ đậm + Chữ màu nhạt) -->
+        <h2 class="about-main-title">
+            Hơn 5 năm kiến tạo <span class="highlight-text">dấu ấn thương hiệu</span>
+        </h2>
         
         <div class="about-grid-layout">
+            <!-- CỘT TRÁI: Khung ảnh nghiêng + Tên & Chức danh góc dưới bên phải -->
             <div class="about-col-left">
                 <div class="about-photo-card">
                     <img src="https://avuggemsmyuuhfdnuyuj.supabase.co/storage/v1/object/public/portfolio/486142766_4014331232221528_4098672848268785320_n-Photoroom.png" alt="Lê Phục Sinh" loading="lazy">
@@ -101,38 +106,42 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
                 </div>
             </div>
 
+            <!-- CỘT PHẢI: Bio phía trên + Bảng kinh nghiệm có đường vạch dọc ngăn cách -->
             <div class="about-col-right">
                 <p class="about-bio-text">
                     Hơn 5 năm kinh nghiệm trong lĩnh vực tiếp thị, chuyển hóa những thấu hiểu về con người thành tác động thương hiệu đầy ý nghĩa. Bởi lẽ, tiếp thị xuất sắc không chỉ dừng lại ở việc được nhìn thấy — mà còn là để lại dấu ấn khó phai trong tâm trí.
                 </p>
 
-                <div class="about-exp-table">
-                    <div class="exp-row">
-                        <span class="exp-role">Digital Strategist</span>
-                        <span class="exp-company">Gene Solutions</span>
-                        <span class="exp-time">2024 → Present</span>
-                    </div>
-                    <div class="exp-row">
-                        <span class="exp-role">MarCom</span>
-                        <span class="exp-company">Viet Can JSC & DAS</span>
-                        <span class="exp-time">2023 → 2024</span>
-                    </div>
-                    <div class="exp-row">
-                        <span class="exp-role">MarCom & Digital Specialist</span>
-                        <span class="exp-company">U&I Logistics</span>
-                        <span class="exp-time">2022 → 2023</span>
-                    </div>
-                    <div class="exp-row">
-                        <span class="exp-role">Marketing Executive</span>
-                        <span class="exp-company">Ha Phan JSC</span>
-                        <span class="exp-time">2019 → 2022</span>
+                <div class="about-exp-wrapper">
+                    <!-- Đường vạch dọc kẻ trái giống ảnh gốc -->
+                    <div class="exp-vertical-line"></div>
+                    <div class="about-exp-table">
+                        <div class="exp-row">
+                            <span class="exp-role">Digital Strategist</span>
+                            <span class="exp-company">Gene Solutions</span>
+                            <span class="exp-time">2024 &rarr; Present</span>
+                        </div>
+                        <div class="exp-row">
+                            <span class="exp-role">MarCom</span>
+                            <span class="exp-company">Viet Can JSC & DAS</span>
+                            <span class="exp-time">2023 &rarr; 2024</span>
+                        </div>
+                        <div class="exp-row">
+                            <span class="exp-role">MarCom & Digital Specialist</span>
+                            <span class="exp-company">U&I Logistics</span>
+                            <span class="exp-time">2022 &rarr; 2023</span>
+                        </div>
+                        <div class="exp-row">
+                            <span class="exp-role">Marketing Executive</span>
+                            <span class="exp-company">Ha Phan JSC</span>
+                            <span class="exp-time">2019 &rarr; 2022</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <section class="sec" id="skills"><div class="wrap"><h2>${E(C.heads.skills[0])}</h2><p class="sub">${E(C.heads.skills[1])}</p>
 <div class="grid3">${C.skills.map(s => `<div class="box"><h3>${E(s[0])}</h3><p>${E(s[1])}</p></div>`).join("")}</div></div></section>
 <section class="sec" id="projects"><div class="wrap"><h2>${E(C.heads.projects[0])}</h2><p class="sub">${E(C.heads.projects[1])}</p>
