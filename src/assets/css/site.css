@@ -441,7 +441,7 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
         text-align: left;
     }
 }
-/* ===== Layout Case Study cuộn ngang tự nhiên thuần chuột ===== */
+/* ===== Layout Case Study cuộn ngang tự nhiên mượt mà ===== */
 .cases-split-sec {
     padding: 6rem 0;
     overflow: hidden;
@@ -500,12 +500,11 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     box-shadow: 0 8px 20px rgba(197, 48, 48, 0.25);
 }
 
-/* --- Cột phải: Thanh trượt thẻ ngang mượt mà --- */
+/* --- Cột phải: Thanh trượt thẻ ngang --- */
 .cases-right-col {
     position: relative;
     width: 100%;
     min-width: 0;
-    /* Hiệu ứng mask mờ nhẹ ở cạnh phải để người dùng nhận biết có nội dung ẩn phía sau */
     -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
     mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
 }
@@ -514,8 +513,7 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     display: flex;
     gap: 1.8rem;
     overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
+    scroll-behavior: auto; /* Dùng auto giúp JS xử lý mượt mà, không bị khựng */
     padding: 1rem 80px 1.5rem 0.5rem;
     cursor: grab;
     user-select: none;
@@ -534,7 +532,6 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 
 .case-card-item {
     flex: 0 0 420px;
-    scroll-snap-align: start;
     background: #FFFFFF;
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 24px;
