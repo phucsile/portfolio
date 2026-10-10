@@ -10,7 +10,7 @@ export const C={
  name:"Lê Phục Sinh",
  role:"Omnichannel Marketing Lead",
  email:"lephucsinh82@gmail.com",
- photo:"/assets/img/hero.svg",
+ photo:"https://avuggemsmyuuhfdnuyuj.supabase.co/storage/v1/object/public/portfolio/173707-849839066_medium.mp4",
  cv:"",
  heads:{skills:["Chín năng lực để biến dữ liệu thành tăng trưởng","Từ hành trình khách hàng đến báo cáo cho lãnh đạo."],projects:["Những dự án mình đã triển khai","Mỗi thẻ mở thành một trang chi tiết."],cases:["Câu chuyện đằng sau các con số","Ba case study kể rõ bối cảnh, hành động và kết quả."],strategies:["Chiến lược mình đã xây cho khách hàng thật","Tài liệu rút gọn, đã ẩn danh dữ liệu."],certs:["Không ngừng học để theo kịp ngành",""]},
  about:{h:"Mình biến tín hiệu của bác sĩ và khách hàng thành hành động đo được.",p:[
