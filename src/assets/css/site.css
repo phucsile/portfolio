@@ -596,18 +596,25 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     color: #C53030;
 }
 
-/* Vết trắng mờ mờ ở mép phải (Gradient Fade Overlay) */
+/* Lớp mờ chuyển màu tự nhiên theo dải nền chung */
 .cases-fade-overlay {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
-    width: 180px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 70%, rgba(255, 255, 255, 1) 100%);
+    width: 160px;
+    /* Dùng gradient từ hoàn toàn trong suốt sang màu nền đồng bộ nhè nhẹ */
+    background: linear-gradient(to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(240, 246, 245, 0.6) 50%, 
+        rgba(235, 245, 242, 0.95) 100%
+    );
+    /* Tạo hiệu ứng làm mờ kính lỏng (glassmorphism) cho thẻ bên dưới */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     pointer-events: none;
     z-index: 3;
 }
-
 /* Nút bấm qua tròn nổi đè lên hiệu ứng mờ */
 .cases-scroll-btn {
     position: absolute;
