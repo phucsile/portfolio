@@ -78,12 +78,11 @@ const footer = () => `<footer class="ft"><div class="wrap"><div class="fg">
 <script src="/assets/js/app.js" defer></script></body></html>`;
 const shell = (meta, body, cls = "") => head(meta) + `\n<body${cls ? ` class="${cls}"` : ""}>\n` + nav(meta.nav) + `<main id="main">${body}</main>\n` + footer();
 const kp = k => `<div class="kp">${k.map(x => `<div><b>${E(x[0])}</b><span>${E(x[1])}</span></div>`).join("")}</div>`;
-const P = a => a.map(x => `<p>${E(x)}</p>`).join("");
 
 /* ---------- trang chủ ---------- */
 const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop playsinline><source src="https://avuggemsmyuuhfdnuyuj.supabase.co/storage/v1/object/public/portfolio/173707-849839066_medium.mp4" type="video/mp4"></video>` : ""}
 <h1>${E(C.name)}</h1><p class="rl">${E(C.role)}</p>
-<a class="dl" href="${E(C.cv \vert{}\vert{} "#contact")}"${C.cv ? " download" : ""}>Tải CV</a>
+<a class="dl" href="${E(C.cv || "#contact")}"${C.cv ? " download" : ""}>Tải CV</a>
 <a class="sc" href="#about" aria-label="Cuộn xuống">CUỘN<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></a></section>
 
 <section class="about-hero" id="about">
@@ -133,6 +132,7 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
         </div>
     </div>
 </section>
+
 <section class="sec" id="skills"><div class="wrap"><h2>${E(C.heads.skills[0])}</h2><p class="sub">${E(C.heads.skills[1])}</p>
 <div class="grid3">${C.skills.map(s => `<div class="box"><h3>${E(s[0])}</h3><p>${E(s[1])}</p></div>`).join("")}</div></div></section>
 <section class="sec" id="projects"><div class="wrap"><h2>${E(C.heads.projects[0])}</h2><p class="sub">${E(C.heads.projects[1])}</p>
@@ -156,7 +156,7 @@ page("/", shell({ title: `${C.name} | ${C.role}`, desc: C.desc, path: "/", ld: [
 
 /* ---------- trang case study và dự án ---------- */
 CASES.forEach(c => {
-  const u = href(c), blk = (o, x = "") => `<section class="blk"><h2>${E(o.h)}</h2><div>${P(o.p)}${x}</div></section>`;
+  const u = href(c), blk = (o, x = "") => `<section class="blk"><h2>${E(o.h)}</h2><div><p>${E(o.p)}</p>${x}</div></section>`;
   const pic = (s, a, w, h) => `<div class="ph has">${im(s, a, w, h)}</div>`;
   const others = CASES.filter(x => x !== c && !!x.proj === !!c.proj);
   const label = c.proj ? "Dự án" : "Case study", hub = c.proj ? "/#projects" : "/#cases";
@@ -218,5 +218,5 @@ write("/sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="ht
 const bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User", "Claude-SearchBot", "PerplexityBot", "Google-Extended", "Applebot-Extended", "CCBot"];
 write("/robots.txt", `User-agent: *\nAllow: /\n\n${bots.map(b => `User-agent: ${b}\n${C.ai === false ? "Disallow: /" : "Allow: /"}\n`).join("\n")}\nSitemap: ${base}/sitemap.xml\n`);
 const li = (t, u, d) => `- [${t}](${base}${u}): ${d.replace(/\n/g, " ")}`;
-write("/llms.txt", `# ${C.name}\n\n> ${C.role}. ${C.desc}\n\n## Trang chính\n${li("Trang chủ", "/", C.tagline)}\n${li("Quyền riêng tư", "/quyen-rieng-tu", "Cách xử lý thông tin liênей")}\n\n## Case study\n${cases.map(c => li(c.title, href(c), c.summary)).join("\n")}\n\n## Dự án\n${projects.map(c => li(c.title, href(c), c.summary)).join("\n")}\n${posts.length ? `\n## Blog\n${posts.map(p => li(p.title, "/blog/" + p.slug, p.desc)).join("\n")}\n` : ""}`);
+write("/llms.txt", `# ${C.name}\n\n> ${C.role}. ${C.desc}\n\n## Trang chính\n${li("Trang chủ", "/", C.tagline)}\n${li("Quyền riêng tư", "/quyen-rieng-tu", "Cách xử lý thông tin liên hệ")}\n\n## Case study\n${cases.map(c => li(c.title, href(c), c.summary)).join("\n")}\n\n## Dự án\n${projects.map(c => li(c.title, href(c), c.summary)).join("\n")}\n${posts.length ? `\n## Blog\n${posts.map(p => li(p.title, "/blog/" + p.slug, p.desc)).join("\n")}\n` : ""}`);
 console.log(`Đã dựng ${urls.length} trang vào ${OUT}/ (${cases.length} case study, ${projects.length} dự án, ${posts.length} bài blog)`);
