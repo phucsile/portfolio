@@ -441,11 +441,10 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
         text-align: left;
     }
 }
-/* ===== Layout Case Study cuộn ngang chuẩn 100% Keyvo ===== */
+/* ===== Layout Case Study chuẩn 100% ===== */
 .cases-split-sec {
     padding: 6rem 0;
     overflow: hidden;
-    position: relative;
 }
 
 .cases-split-wrap {
@@ -456,7 +455,6 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     max-width: 1280px;
 }
 
-/* Cột trái */
 .cases-left-col {
     display: flex;
     flex-direction: column;
@@ -489,8 +487,48 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 .cases-sub-text {
     font-size: 1rem;
     color: var(--mut);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
+}
+
+/* Nút bấm điều hướng Trái / Phải nằm ở Cột trái */
+.cases-nav-btns {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.8rem;
+}
+
+.cases-scroll-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    color: #0F172A;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.25s ease;
+}
+
+.cases-scroll-btn:hover:not(:disabled) {
+    background: #C53030;
+    color: #FFFFFF;
+    border-color: #C53030;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(197, 48, 48, 0.3);
+}
+
+.cases-scroll-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.cases-scroll-btn svg {
+    width: 18px;
+    height: 18px;
 }
 
 .cases-cta-btn {
@@ -502,32 +540,40 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     box-shadow: 0 8px 20px rgba(197, 48, 48, 0.25);
 }
 
-/* --- Cột phải: Slider cuộn ngang --- */
+/* --- Cột phải: Khối chứa có hiệu ứng Mờ Mềm (Masking) không để lại vệt màu --- */
 .cases-right-col {
     position: relative;
     width: 100%;
-    min-width: 0; /* Bắt buộc để flex/grid con không bị bế tắc kích thước */
+    min-width: 0;
+    /* Dùng mask-image để mờ mềm viền phải 100% tự nhiên mà không cần overlay màu trắng */
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 82%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 82%, rgba(0, 0, 0, 0) 100%);
 }
 
-/* Thanh cuộn chứa các card nằm trên 1 HÀNG NGANG duy nhất */
 .cases-cards-slider {
     display: flex;
     gap: 1.8rem;
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    padding: 1rem 120px 1.5rem 0.5rem; /* Padding phải rộng để card cuối bị mờ nhẹ */
-    -ms-overflow-style: none;  /* Ẩn thanh cuộn Edge/IE */
-    scrollbar-width: none;  /* Ẩn thanh cuộn Firefox */
+    padding: 1rem 80px 1.5rem 0.5rem;
+    cursor: grab; /* Con trỏ hình bàn tay nắm kéo */
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.cases-cards-slider:active {
+    cursor: grabbing; /* Khi đang nắm kéo chuột */
 }
 
 .cases-cards-slider::-webkit-scrollbar {
-    display: none; /* Ẩn thanh cuộn Chrome/Safari */
+    display: none;
 }
 
-/* Từng thẻ Card */
 .case-card-item {
-    flex: 0 0 460px; /* Cố định chiều rộng từng card, không co hẹp */
+    flex: 0 0 420px;
     scroll-snap-align: start;
     background: #FFFFFF;
     border: 1px solid rgba(15, 23, 42, 0.08);
@@ -596,58 +642,13 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     color: #C53030;
 }
 
-/* Lớp mờ chuyển màu tự nhiên theo dải nền chung */
-.cases-fade-overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 160px;
-    /* Dùng gradient từ hoàn toàn trong suốt sang màu nền đồng bộ nhè nhẹ */
-    background: linear-gradient(to right, 
-        rgba(255, 255, 255, 0) 0%, 
-        rgba(240, 246, 245, 0.6) 50%, 
-        rgba(235, 245, 242, 0.95) 100%
-    );
-    /* Tạo hiệu ứng làm mờ kính lỏng (glassmorphism) cho thẻ bên dưới */
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    pointer-events: none;
-    z-index: 3;
-}
-/* Nút bấm qua tròn nổi đè lên hiệu ứng mờ */
-.cases-scroll-btn {
-    position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: #E2E8F0;
-    color: #0F172A;
-    border: none;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    z-index: 4;
-    transition: background 0.2s, transform 0.2s;
-}
-
-.cases-scroll-btn:hover {
-    background: #CBD5E1;
-    transform: translateY(-50%) scale(1.08);
-}
-
-.cases-scroll-btn svg {
-    width: 20px;
-    height: 20px;
-}
-
 @media (max-width: 900px) {
     .cases-split-wrap {
         grid-template-columns: 1fr;
+    }
+    .cases-right-col {
+        -webkit-mask-image: none;
+        mask-image: none;
     }
     .case-card-item {
         flex: 0 0 85vw;
