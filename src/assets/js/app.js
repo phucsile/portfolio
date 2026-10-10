@@ -89,24 +89,27 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.scrollLeft = scrollLeft - walk;
   });
 });
-// Hiệu ứng Scroll Reveal chuyên nghiệp khi cuộn xuống
 document.addEventListener('DOMContentLoaded', () => {
   const slider = document.getElementById('caseSlider');
   if (!slider) return;
 
-  // 1. Cho phép lăn chuột dọc (hoặc trackpad) để cuộn ngang các case study
+  // 1. Chuyển đổi lăn chuột dọc thành lướt ngang mượt mà và thông minh
   slider.addEventListener('wheel', (e) => {
-    // Nếu người dùng đang cuộn ngang hoặc cuộn dọc nằm trong vùng slider
-    if (e.deltaY !== 0) {
-      // Kiểm tra nếu chưa cuộn hết sang phải hoặc trái thì chặn scroll dọc của trang để trượt ngang trước
-      const isAtStart = slider.scrollLeft === 0 && e.deltaY < 0;
-      const isAtEnd = slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 1 && e.deltaY > 0;
-      
-      if (!isAtStart && !isAtEnd) {
-        e.preventDefault();
-        slider.scrollLeft += e.deltaY * 1.5;
-      }
+    // Ưu tiên chuyển đổi deltaY thành cuộn ngang
+    const scrollAmount = e.deltaY !== 0 ? e.deltaY : e.deltaX;
+    const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+    const currentScroll = slider.scrollLeft;
+
+    // Kiểm tra xem đang ở điểm đầu hoặc điểm cuối của danh sách card chưa
+    const isAtStart = currentScroll <= 2 && scrollAmount < 0;
+    const isAtEnd = currentScroll >= maxScrollLeft - 2 && scrollAmount > 0;
+
+    // Nếu chưa chạm biên (đầu hoặc cuối), thực hiện trượt ngang và chặn cuộn dọc trang
+    if (!isAtStart && !isAtEnd) {
+      e.preventDefault();
+      slider.scrollLeft += scrollAmount * 1.2;
     }
+    // Nếu đã trượt hết sang phải (hoặc trái cùng biên), cho phép trang tiếp tục cuộn dọc tự nhiên xuống dưới
   }, { passive: false });
 
   // 2. Hỗ trợ nắm kéo chuột (Drag-to-Scroll)
