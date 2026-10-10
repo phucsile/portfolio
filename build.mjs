@@ -86,7 +86,6 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
 <a class="dl" href="${E(C.cv || "#contact")}"${C.cv ? " download" : ""}>Tải CV</a>
 <a class="sc" href="#about" aria-label="Cuộn xuống">CUỘN<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></a></section>
 <section class="about" id="about"><div class="wrap"><h2>${E(C.about.h)}</h2><div>${P(C.about.p)}</div></div></section>
-<section class="about" id="about"><div class="wrap"><h2>${E(C.about.h)}</h2><div>${P(C.about.p)}</div></div></section>
 <section class="sec" id="skills"><div class="wrap"><h2>${E(C.heads.skills[0])}</h2><p class="sub">${E(C.heads.skills[1])}</p>
 <div class="grid3">${C.skills.map(s => `<div class="box"><h3>${E(s[0])}</h3><p>${E(s[1])}</p></div>`).join("")}</div></div></section>
 <section class="sec" id="projects"><div class="wrap"><h2>${E(C.heads.projects[0])}</h2><p class="sub">${E(C.heads.projects[1])}</p>
