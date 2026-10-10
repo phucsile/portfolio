@@ -441,30 +441,29 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
         text-align: left;
     }
 }
-/* ===== Bố cục Layout Case Study 2 Cột (Kiểu Keyvo) ===== */
+/* ===== Layout Case Study cuộn ngang chuẩn 100% Keyvo ===== */
 .cases-split-sec {
     padding: 6rem 0;
     overflow: hidden;
+    position: relative;
 }
 
 .cases-split-wrap {
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 320px 1fr;
     gap: 3.5rem;
-    align-items: start;
-    max-width: 1240px;
+    align-items: center;
+    max-width: 1280px;
 }
 
-/* --- Cột trái sticky --- */
+/* Cột trái */
 .cases-left-col {
-    position: sticky;
-    top: 100px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    z-index: 2;
 }
 
-/* Tag badge hình chữ nhật viền bo góc nền xanh nhạt / nổi bật */
 .cases-badge {
     display: inline-block;
     padding: 0.35rem 0.85rem;
@@ -488,13 +487,12 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 }
 
 .cases-sub-text {
-    font-size: 1.02rem;
+    font-size: 1rem;
     color: var(--mut);
     margin-bottom: 2rem;
     line-height: 1.6;
 }
 
-/* Nút CTA dưới cột trái màu Gradient Đỏ - Nâu mệnh Thổ */
 .cases-cta-btn {
     background: linear-gradient(135deg, #C53030 0%, #9C4221 100%) !important;
     color: #fff !important;
@@ -502,43 +500,49 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     padding: 0.85rem 1.6rem;
     font-size: 0.95rem;
     box-shadow: 0 8px 20px rgba(197, 48, 48, 0.25);
-    transition: transform 0.25s, box-shadow 0.25s;
 }
 
-.cases-cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(156, 66, 33, 0.4);
-}
-
-/* --- Cột phải: Khối Card cuộn ngang / Grid --- */
+/* --- Cột phải: Slider cuộn ngang --- */
 .cases-right-col {
+    position: relative;
     width: 100%;
-    min-width: 0;
+    min-width: 0; /* Bắt buộc để flex/grid con không bị bế tắc kích thước */
 }
 
-.cases-cards-scroll {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(320px, 1fr));
+/* Thanh cuộn chứa các card nằm trên 1 HÀNG NGANG duy nhất */
+.cases-cards-slider {
+    display: flex;
     gap: 1.8rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 120px 1.5rem 0.5rem; /* Padding phải rộng để card cuối bị mờ nhẹ */
+    -ms-overflow-style: none;  /* Ẩn thanh cuộn Edge/IE */
+    scrollbar-width: none;  /* Ẩn thanh cuộn Firefox */
 }
 
-/* Kiểu dáng từng thẻ Card Case Study */
+.cases-cards-slider::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn Chrome/Safari */
+}
+
+/* Từng thẻ Card */
 .case-card-item {
-    background: rgba(255, 255, 255, 0.85);
-    border: 1px solid var(--line);
+    flex: 0 0 460px; /* Cố định chiều rộng từng card, không co hẹp */
+    scroll-snap-align: start;
+    background: #FFFFFF;
+    border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 24px;
-    padding: 1.25rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
-    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s, border-color 0.3s;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .case-card-item:hover {
-    transform: translateY(-6px);
-    border-color: #C53030;
-    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
 }
 
 .case-card-item .cimg {
@@ -546,29 +550,25 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     aspect-ratio: 16 / 9;
     overflow: hidden;
     margin-bottom: 1.2rem;
+    background: #F8FAFC;
 }
 
-.case-card-body {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.case-card-body .tg {
+.case-card-inner .tg {
     font-weight: 700;
     font-size: 0.82rem;
     color: #C53030;
     margin-bottom: 0.4rem;
+    display: block;
 }
 
-.case-card-body h3 {
+.case-card-inner h3 {
     font-size: 1.2rem;
     line-height: 1.35;
     margin-bottom: 0.6rem;
     color: var(--tx);
 }
 
-.case-card-body p {
+.case-card-inner p {
     font-size: 0.92rem;
     color: var(--mut);
     line-height: 1.55;
@@ -579,13 +579,13 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto;
+    margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .case-step-label {
-    font-size: 0.85rem;
+    font-size: 1.05rem;
     font-weight: 800;
     color: var(--tx);
 }
@@ -596,16 +596,53 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     color: #C53030;
 }
 
-/* Responsive cho thiết bị di động & tablet */
-@media (max-width: 960px) {
+/* Vết trắng mờ mờ ở mép phải (Gradient Fade Overlay) */
+.cases-fade-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 180px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 70%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none;
+    z-index: 3;
+}
+
+/* Nút bấm qua tròn nổi đè lên hiệu ứng mờ */
+.cases-scroll-btn {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #E2E8F0;
+    color: #0F172A;
+    border: none;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    z-index: 4;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.cases-scroll-btn:hover {
+    background: #CBD5E1;
+    transform: translateY(-50%) scale(1.08);
+}
+
+.cases-scroll-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 900px) {
     .cases-split-wrap {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
     }
-    .cases-left-col {
-        position: static;
-    }
-    .cases-cards-scroll {
-        grid-template-columns: 1fr;
+    .case-card-item {
+        flex: 0 0 85vw;
     }
 }
