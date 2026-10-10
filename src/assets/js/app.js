@@ -89,3 +89,29 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.scrollLeft = scrollLeft - walk;
   });
 });
+// Hiệu ứng Scroll Reveal chuyên nghiệp khi cuộn xuống
+document.addEventListener('DOMContentLoaded', () => {
+  const revealElements = document.querySelectorAll('.reveal-item');
+
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Thêm độ trễ (stagger) cho từng khối tròn trồi lên mượt mà
+          setTimeout(() => {
+            entry.target.classList.add('is-visible');
+          }, index * 120);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15 // Kích hoạt khi thấy 15% phần tử
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback cho trình duyệt cũ
+    revealElements.forEach(el => el.classList.add('is-visible'));
+  }
+});
