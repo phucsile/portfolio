@@ -23,6 +23,57 @@
 body, h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea, select {
     font-family: var(--font-main) !important;
 }
+/* ===== Hiệu ứng phóng to & tương tác mượt mà khi hover vào dòng kinh nghiệm ===== */
+.exp-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1.2fr auto;
+    gap: 1.2rem;
+    padding: 1.2rem 1.2rem; /* Thêm padding ngang một chút để tạo vùng đệm */
+    margin: 0 -1.2rem; /* Cân đối lại lề khi mở rộng padding */
+    border-bottom: 1px solid #E2E8F0;
+    border-radius: 12px; /* Bo góc nhẹ để khi hover tạo thành khối nổi */
+    align-items: center;
+    font-size: 1.08rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); /* Hiệu ứng chuyển động mượt mà */
+    cursor: pointer;
+}
+
+.exp-row:last-child {
+    border-bottom: none;
+}
+
+/* Hiệu ứng khi rê chuột vào từng hàng (Row) */
+.exp-row:hover {
+    background: rgba(255, 255, 255, 0.85); /* Nền trắng kính lỏng khi hover */
+    transform: scale(1.03) translateX(6px); /* Phóng to nhẹ toàn bộ hàng và dịch chuyển sang phải một chút */
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06); /* Đổ bóng nổi cao cấp */
+    border-bottom-color: transparent;
+}
+
+.exp-role {
+    font-weight: 700;
+    color: #0F172A;
+    font-size: 1.12rem;
+    transition: color 0.25s ease;
+}
+
+/* Đổi màu nhấn mạnh tên chức vụ khi rê chuột (tông màu đỏ/nâu chủ đạo) */
+.exp-row:hover .exp-role {
+    color: #C53030; 
+}
+
+.exp-company {
+    color: #475569;
+    font-size: 1.02rem;
+}
+
+.exp-time {
+    text-align: right;
+    font-weight: 700;
+    color: #334155;
+    font-size: 1.02rem;
+    white-space: nowrap;
+}
 /* ===== Nền tảng dùng chung: nền trắng, thanh điều hướng, kính lỏng kiểu Apple ===== */
 :root{color-scheme:light}
 *,*::before,*::after{box-sizing:border-box}
