@@ -81,7 +81,7 @@ const kp = k => `<div class="kp">${k.map(x => `<div><b>${E(x[0])}</b><span>${E(x
 const P = a => a.map(x => `<p>${E(x)}</p>`).join("");
 
 /* ---------- trang chủ ---------- */
-const home = () => `<section class="hf">${C.photo ? im(C.photo, `${C.name}, ${C.role}`, 1920, 1080, true) : ""}
+const home = () => `<section class="hf">${C.photo ? im(C.photo, `${C.name},${C.role}`, 1920, 1080, true) : ""}
 <h1>${E(C.name)}</h1><p class="rl">${E(C.role)}</p>
 <a class="dl" href="${E(C.cv || "#contact")}"${C.cv ? " download" : ""}>Tải CV</a>
 <a class="sc" href="#about" aria-label="Cuộn xuống">CUỘN<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></a></section>
@@ -131,43 +131,26 @@ ${blk(c.les)}
 /* ---------- quyền riêng tư, 404, blog ---------- */
 page("/quyen-rieng-tu", shell({ title: `Quyền riêng tư | ${C.name}`, desc: `Cách ${C.name} thu thập và sử dụng thông tin bạn gửi qua biểu mẫu liên hệ.`, path: "/quyen-rieng-tu" }, `<div class="wrap narrow pg"><h1>Quyền riêng tư</h1>
 <p><b>CHÍNH SÁCH QUYỀN RIÊNG TƯ</b></p>
-
 <h2>1. Phạm vi và Mục đích thu thập thông tin</h2>
 <ul>
-    <li>
-        Trang web thu thập các thông tin cá nhân do người dùng <b>chủ động cung cấp</b> qua biểu mẫu liên hệ, bao gồm: <b>Họ và tên</b>, <b>địa chỉ email</b>, <b>chủ đề</b> và <b>nội dung tin nhắn</b>.
-    </li>
-    <li>
-        Thông tin này được sử dụng <b>độc quyền</b> nhằm mục đích phản hồi các yêu cầu liên hệ, giải đáp thắc mắc và trao đổi về các <b>cơ hội hợp tác nghề nghiệp</b>.
-    </li>
-    <li>
-        Website cam kết <b>không sử dụng cookie theo dõi quảng cáo</b>, đồng thời <b>không bán, trao đổi hoặc chia sẻ</b> thông tin cá nhân của người dùng với bất kỳ bên thứ ba nào vì mục đích thương mại.
-    </li>
+    <li>Trang web thu thập các thông tin cá nhân do người dùng <b>chủ động cung cấp</b> qua biểu mẫu liên hệ, bao gồm: <b>Họ và tên</b>, <b>địa chỉ email</b>, <b>chủ đề</b> và <b>nội dung tin nhắn</b>.</li>
+    <li>Thông tin này được sử dụng <b>độc quyền</b> nhằm mục đích phản hồi các yêu cầu liên hệ, giải đáp thắc mắc và trao đổi về các <b>cơ hội hợp tác nghề nghiệp</b>.</li>
+    <li>Website cam kết <b>không sử dụng cookie theo dõi quảng cáo</b>, đồng thời <b>không bán, trao đổi hoặc chia sẻ</b> thông tin cá nhân với bên thứ ba vì mục đích thương mại.</li>
 </ul>
-
 <h2>2. Lưu trữ và Bảo mật dữ liệu</h2>
 <ul>
-    <li>
-        Dữ liệu tin nhắn liên hệ được <b>lưu trữ an toàn</b> trong cơ sở dữ liệu có áp dụng các biện pháp kiểm soát truy cập nghiêm ngặt.
-    </li>
-    <li>
-        Thông tin sẽ được <b>rà soát và xóa định kỳ</b> khi không còn cần thiết cho mục đích trao đổi hoặc theo yêu cầu hợp pháp của người dùng.
-    </li>
-    <li>
-        <b>Lưu trữ trình duyệt (Local Storage):</b> Website lưu trữ tạm thời một mốc thời gian (timestamp) trên trình duyệt của người dùng nhằm mục đích kỹ thuật thuần túy: <b>giới hạn tần suất gửi tin nhắn lặp lại</b> (tối thiểu cách nhau 01 phút) nhằm ngăn chặn spam.
-    </li>
+    <li>Dữ liệu tin nhắn liên hệ được <b>lưu trữ an toàn</b> trong cơ sở dữ liệu có áp dụng các biện pháp kiểm soát truy cập nghiêm ngặt.</li>
+    <li>Thông tin sẽ được <b>rà soát và xóa định kỳ</b> khi không còn cần thiết cho mục đích trao đổi hoặc theo yêu cầu hợp pháp của người dùng.</li>
+    <li><b>Lưu trữ trình duyệt (Local Storage):</b> Website lưu trữ tạm thời một mốc thời gian (timestamp) trên trình duyệt nhằm mục đích kỹ thuật thuần túy: <b>giới hạn tần suất gửi tin nhắn lặp lại</b> (tối thiểu cách nhau 01 phút) nhằm ngăn chặn spam.</li>
 </ul>
-
 <h2>3. Quyền lợi của người dùng</h2>
 <ul>
-    <li>
-        Người dùng có toàn quyền <b>yêu cầu truy cập, chỉnh sửa hoặc xóa bỏ</b> thông tin cá nhân của mình bất kỳ lúc nào.
-    </li>
-    <li>
-        Mọi yêu cầu liên quan đến quyền riêng tư hoặc cần hỗ trợ, vui lòng gửi email trực tiếp về địa chỉ: <b>lephucsinh82@gmail.com</b>.
-    </li>
-</ul>
+    <li>Người dùng có toàn quyền <b>yêu cầu truy cập, chỉnh sửa hoặc xóa bỏ</b> thông tin cá nhân của mình bất kỳ lúc nào.</li>
+    <li>Mọi yêu cầu liên quan đến quyền riêng tư hoặc cần hỗ trợ, vui lòng gửi email trực tiếp về địa chỉ: <b>lephucsinh82@gmail.com</b>.</li>
+</ul></div>`));
+
 write("/404.html", shell({ title: `Không tìm thấy trang | ${C.name}`, desc: "Trang bạn tìm không tồn tại.", path: "/404", noindex: true }, `<div class="wrap narrow pg"><h1>Không tìm thấy trang</h1><p>Đường dẫn có thể đã thay đổi. Hãy quay về <a href="/"><u>trang chủ</u></a> hoặc xem các <a href="/#cases"><u>case study</u></a>.</p></div>`));
+
 if (posts.length) {
   page("/blog", shell({ title: `Blog | ${C.name}`, desc: `Bài viết về ${C.role} của ${C.name}.`, path: "/blog", ld: [crumbs([["Trang chủ", "/"], ["Blog", "/blog"]])] },
     `<div class="wrap narrow pg"><h1>Blog</h1><div class="pl">${posts.map(p => `<a class="oc" href="/blog/${p.slug}"><span class="tg">${E(p.date)}</span><h3>${E(p.title)}</h3><p>${E(p.desc)}</p></a>`).join("")}</div></div>`));
@@ -186,5 +169,5 @@ write("/sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="ht
 const bots = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-User", "Claude-SearchBot", "PerplexityBot", "Google-Extended", "Applebot-Extended", "CCBot"];
 write("/robots.txt", `User-agent: *\nAllow: /\n\n${bots.map(b => `User-agent: ${b}\n${C.ai === false ? "Disallow: /" : "Allow: /"}\n`).join("\n")}\nSitemap: ${base}/sitemap.xml\n`);
 const li = (t, u, d) => `- [${t}](${base}${u}): ${d.replace(/\n/g, " ")}`;
-write("/llms.txt", `# ${C.name}\n\n> ${C.role}. ${C.desc}\n\n## Trang chính\n${li("Trang chủ", "/", C.tagline)}\n${li("Quyền riêng tư", "/quyen-rieng-tu", "Cách xử lý thông tin liên hệ")}\n\n## Case study\n${cases.map(c => li(c.title, href(c), c.summary)).join("\n")}\n\n## Dự án\n${projects.map(c => li(c.title, href(c), c.summary)).join("\n")}\n${posts.length ? `\n## Blog\n${posts.map(p => li(p.title, "/blog/" + p.slug, p.desc)).join("\n")}\n` : ""}`);
+write("/llms.txt", `# ${C.name}\n\n> ${C.role}. ${C.desc}\n\n## Trang chính\n${li("Trang chủ", "/", C.tagline)}\n${li("Quyền riêng tư", "/quyen-rieng-tu", "Cách xử lý thông tin liênей")}\n\n## Case study\n${cases.map(c => li(c.title, href(c), c.summary)).join("\n")}\n\n## Dự án\n${projects.map(c => li(c.title, href(c), c.summary)).join("\n")}\n${posts.length ? `\n## Blog\n${posts.map(p => li(p.title, "/blog/" + p.slug, p.desc)).join("\n")}\n` : ""}`);
 console.log(`Đã dựng ${urls.length} trang vào ${OUT}/ (${cases.length} case study, ${projects.length} dự án, ${posts.length} bài blog)`);
