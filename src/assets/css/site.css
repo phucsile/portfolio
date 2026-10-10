@@ -441,7 +441,7 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
         text-align: left;
     }
 }
-/* ===== Layout Case Study chuẩn 100% ===== */
+/* ===== Layout Case Study cuộn ngang tự nhiên thuần chuột ===== */
 .cases-split-sec {
     padding: 6rem 0;
     overflow: hidden;
@@ -487,64 +487,27 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 .cases-sub-text {
     font-size: 1rem;
     color: var(--mut);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
     line-height: 1.6;
 }
 
-/* --- Tinh chỉnh vị trí cụm nút điều hướng Case Study --- */
-.cases-slider-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding-right: 1rem;
+.cases-cta-btn {
+    background: linear-gradient(135deg, #C53030 0%, #9C4221 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 0.85rem 1.6rem;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 20px rgba(197, 48, 48, 0.25);
 }
 
-.cases-nav-btns {
-    display: flex;
-    gap: 0.6rem;
-}
-
-.cases-scroll-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #FFFFFF;
-    color: #0F172A;
-    border: 1px solid rgba(15, 23, 42, 0.12);
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    transition: all 0.25s ease;
-}
-
-.cases-scroll-btn:hover:not(:disabled) {
-    background: #C53030;
-    color: #FFFFFF;
-    border-color: #C53030;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(197, 48, 48, 0.25);
-}
-
-.cases-scroll-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-.cases-scroll-btn svg {
-    width: 16px;
-    height: 16px;
-}
-/* --- Cột phải: Khối chứa có hiệu ứng Mờ Mềm (Masking) không để lại vệt màu --- */
+/* --- Cột phải: Thanh trượt thẻ ngang mượt mà --- */
 .cases-right-col {
     position: relative;
     width: 100%;
     min-width: 0;
-    /* Dùng mask-image để mờ mềm viền phải 100% tự nhiên mà không cần overlay màu trắng */
-    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 82%, rgba(0, 0, 0, 0) 100%);
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 82%, rgba(0, 0, 0, 0) 100%);
+    /* Hiệu ứng mask mờ nhẹ ở cạnh phải để người dùng nhận biết có nội dung ẩn phía sau */
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
 }
 
 .cases-cards-slider {
@@ -554,7 +517,7 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     padding: 1rem 80px 1.5rem 0.5rem;
-    cursor: grab; /* Con trỏ hình bàn tay nắm kéo */
+    cursor: grab;
     user-select: none;
     -webkit-user-select: none;
     -ms-overflow-style: none;
@@ -562,7 +525,7 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 }
 
 .cases-cards-slider:active {
-    cursor: grabbing; /* Khi đang nắm kéo chuột */
+    cursor: grabbing;
 }
 
 .cases-cards-slider::-webkit-scrollbar {
