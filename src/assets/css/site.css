@@ -265,118 +265,174 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 .pl{display:grid;gap:1rem;padding-bottom:3rem}
 @media(max-width:860px){.fg{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.fg{grid-template-columns:1fr}}
-/* ===== Custom Section: About Us (Who Am I Layout) ===== */
+/* ===== Bố cục 100% giống mẫu "Who Am I" ===== */
 .about-hero {
-    padding: 6rem 0;
+    padding: 5rem 0;
+    text-align: center;
 }
+
+/* Sub-tag nghiêng / Who Am I */
 .about-top-tag {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--mut);
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #64748B;
     margin-bottom: 0.5rem;
-    letter-spacing: 0.05em;
 }
+
+/* Tiêu đề chính căn giữa */
 .about-main-title {
-    font-size: clamp(2rem, 4.5vw, 3.5rem);
-    margin-bottom: 3.5rem;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
     font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 4rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
 }
-.about-main-title span {
+
+/* Màu Gradient mệnh Thổ cho cụm từ highlight */
+.about-main-title .highlight-text {
     background: linear-gradient(135deg, #C53030 0%, #9C4221 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 400; /* Làm mỏng bớt để tạo hiệu ứng tương phản như chữ "since 2011" trong mẫu */
 }
+
+/* Layout 2 cột chính */
 .about-grid-layout {
     display: grid;
-    grid-template-columns: 1.1fr 1.3fr;
+    grid-template-columns: 1fr 1.15fr;
     gap: 4rem;
+    text-align: left;
     align-items: start;
 }
-.about-photo-card {
-    background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
-    border: 1px solid rgba(255,255,255,0.8);
-    border-radius: 28px;
-    padding: 1rem;
-    box-shadow: 0 16px 40px rgba(15,23,42,0.08);
-    transform: rotate(-1.5deg);
-    transition: transform 0.3s ease;
-}
-.about-photo-card:hover {
-    transform: rotate(0deg);
-}
-.about-photo-card img {
-    width: 100%;
-    height: auto;
-    max-height: 440px;
-    object-fit: cover;
-    border-radius: 20px;
-    display: block;
-}
-.about-author-info {
-    margin-top: 1.2rem;
-    padding-left: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-.about-author-info h4 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin: 0;
-    color: var(--tx);
-}
-.about-author-info p {
-    font-size: 0.9rem;
-    color: var(--mut);
-    margin: 0;
-}
-.about-bio-text {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--mut);
-    margin-bottom: 3rem;
-}
-.about-exp-table {
+
+/* --- Cột trái: Thẻ ảnh & Thông tin tác giả --- */
+.about-col-left {
     display: flex;
     flex-direction: column;
 }
+
+/* Khung ảnh bo góc lớn và xoay nhẹ -2deg */
+.about-photo-card {
+    background: #0F172A;
+    border-radius: 20px;
+    padding: 6px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.about-photo-card:hover {
+    transform: rotate(0deg);
+}
+
+.about-photo-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+    filter: grayscale(20%); /* Tăng độ nghệ thuật cho ảnh */
+}
+
+/* Tên & Chức danh đặt ở góc dưới bên phải dưới ảnh */
+.about-author-info {
+    align-self: flex-end;
+    text-align: right;
+    margin-top: 1.2rem;
+}
+
+.about-author-info h4 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.about-author-info p {
+    margin: 0.1rem 0 0;
+    font-size: 0.88rem;
+    color: #64748B;
+}
+
+/* --- Cột phải: Bio & Bảng kinh nghiệm --- */
+.about-bio-text {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #334155;
+    margin-top: 0;
+    margin-bottom: 3.5rem;
+    max-width: 52ch;
+}
+
+/* Khối bảng kinh nghiệm kèm vạch xám đứng */
+.about-exp-wrapper {
+    display: flex;
+    gap: 1.8rem;
+    align-items: stretch;
+}
+
+.exp-vertical-line {
+    width: 2px;
+    background-color: #E2E8F0;
+    flex-shrink: 0;
+}
+
+.about-exp-table {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
 .exp-row {
     display: grid;
-    grid-template-columns: 1.3fr 1.2fr 1fr;
+    grid-template-columns: 1.3fr 1.2fr auto;
     gap: 1rem;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid var(--line);
+    padding: 0.9rem 0;
+    border-bottom: 1px solid #E2E8F0;
     align-items: center;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
 }
-.exp-row:first-child {
-    border-top: 1px solid var(--line);
+
+.exp-row:last-child {
+    border-bottom: none;
 }
+
 .exp-role {
     font-weight: 700;
-    color: var(--tx);
+    color: #0F172A;
 }
+
 .exp-company {
-    color: var(--mut);
+    color: #64748B;
 }
+
 .exp-time {
     text-align: right;
     font-weight: 600;
-    background: linear-gradient(135deg, #C53030 0%, #9C4221 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #475569;
+    white-space: nowrap;
 }
 
-@media(max-width: 900px) {
+/* Responsive cho thiết bị di động */
+@media (max-width: 860px) {
     .about-grid-layout {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 3rem;
     }
+    
+    .about-photo-card {
+        transform: none;
+    }
+
     .exp-row {
         grid-template-columns: 1fr;
         gap: 0.2rem;
-        padding: 1rem 0;
     }
+
     .exp-time {
         text-align: left;
     }
