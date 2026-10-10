@@ -97,7 +97,7 @@ const home = () => `<section class="hf">${C.photo ? im(C.photo, `${C.name}, ${C.
 <section class="sec" id="certs"><div class="wrap"><h2>${E(C.heads.certs[0])}</h2>${C.heads.certs[1] ? `<p class="sub">${E(C.heads.certs[1])}</p>` : ""}<div class="certs">${C.certs.map(c => `<a href="${E(c[1])}">${E(c[0])}</a>`).join("")}</div></div></section>
 <section class="sec" id="contact"><div class="wrap"><h2>${E(C.contact.h)}</h2>
 <div class="ctg"><div><dl class="cd"><div><dt>Email</dt><dd><a href="mailto:${E(C.email)}">${E(C.email)}</a></dd></div><div><dt>Điện thoại</dt><dd>${E(C.contact.phone)}</dd></div><div><dt>Địa điểm</dt><dd>${E(C.contact.loc)}</dd></div></dl>
-<p class="nt">${E(C.contact.note)}</p><div class="soc">${C.contact.social.map(s => `<a href="${E(s.u)}" target="_blank" rel="noopener me" aria-label="${E(s.n)}"><i>${E(s.m)}</i>${E(s.n)}</a>`).join("")}</div></div>
+${E(C.contact.note)}</p><div class="soc">${C.contact.social.map(s => `<a href="${E(s.u)}" target="_blank" rel="noopener me" aria-label="${E(s.n)}"><i>${E(s.m)}</i>${E(s.n)}</a>`).join("")}</div></div>
 <form id="cf" class="cf" data-sb-url="${E(SB.url)}" data-sb-key="${E(SB.key)}"><div class="r2"><input name="name" placeholder="Họ và tên" aria-label="Họ và tên" required maxlength="100" autocomplete="name"><input name="email" type="email" placeholder="Email" aria-label="Email" required maxlength="150" autocomplete="email"></div>
 <input name="subject" placeholder="Chủ đề" aria-label="Chủ đề" maxlength="150"><textarea name="message" placeholder="Nội dung" aria-label="Nội dung" required minlength="5" maxlength="2000"></textarea>
 <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
