@@ -191,27 +191,27 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
 <div class="grid3">${C.projects.map(p => `<a class="box pcard" href="${href(CASES[p.ref])}"><div class="top"><div class="lg">${p.logo ? im(p.logo, "", 200, 200) : "Logo"}</div><span class="tg">${E(p.tag)}</span></div><h3>${E(p.t)}</h3><p>${E(p.d)}</p>${kp(p.k)}<span class="more">Xem dự án</span></a>`).join("")}</div></div></section>
 <section class="sec cases-split-sec" id="cases">
   <div class="wrap cases-split-wrap">
-    <!-- CỘT TRÁI -->
+    <!-- CỘT TRÁI: Chỉ giữ lại Badge, Tiêu đề, Subtitle và Nút Khám phá -->
     <div class="cases-left-col">
       <span class="cases-badge">CASE STUDY NỔI BẬT</span>
       <h2 class="cases-heading">Câu chuyện đằng sau các con số</h2>
       <p class="sub cases-sub-text">Ba case study kể rõ bối cảnh, hành động và kết quả.</p>
-      
-      <!-- Cụm nút bấm điều hướng Trái / Phải -->
-      <div class="cases-nav-btns">
-        <button class="cases-scroll-btn prev" id="caseScrollPrev" aria-label="Xem case study trước" disabled>
-          <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button class="cases-scroll-btn next" id="caseScrollNext" aria-label="Xem case study tiếp theo">
-          <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-
       <a class="btn fill cases-cta-btn" href="#contact">Khám phá chi tiết &rarr;</a>
     </div>
 
-    <!-- CỘT PHẢI: Khối Carousel hỗ trợ kéo thả & Mask mờ mềm mại -->
+    <!-- CỘT PHẢI: Đặt cụm nút điều hướng lên góc trên bên phải của danh sách card -->
     <div class="cases-right-col">
+      <div class="cases-slider-header">
+        <div class="cases-nav-btns">
+          <button class="cases-scroll-btn prev" id="caseScrollPrev" aria-label="Xem case study trước" disabled>
+            <svg viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="cases-scroll-btn next" id="caseScrollNext" aria-label="Xem case study tiếp theo">
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
       <div class="cases-cards-slider" id="caseSlider">
         ${cases.map((c, i) => `
           <a class="box pcard case-card-item" href="${href(c)}">
