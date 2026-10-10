@@ -7,9 +7,9 @@ export const C={
  tagline:"Omnichannel Marketing cho Healthcare và Biotech: biến tín hiệu của bác sĩ và khách hàng thành hành động đo được.",
  ogImage:"/assets/img/og.png",
  ai:true,
- name:"Nguyễn Minh Khôi",
- role:"Omnichannel Marketing Lead, Healthcare và Biotech",
- email:"email@example.com",
+ name:"Lê Phục Sinh",
+ role:"Omnichannel Marketing Lead",
+ email:"lephucsinh82@gmail.com",
  photo:"/assets/img/hero.svg",
  cv:"",
  heads:{skills:["Chín năng lực để biến dữ liệu thành tăng trưởng","Từ hành trình khách hàng đến báo cáo cho lãnh đạo."],projects:["Những dự án mình đã triển khai","Mỗi thẻ mở thành một trang chi tiết."],cases:["Câu chuyện đằng sau các con số","Ba case study kể rõ bối cảnh, hành động và kết quả."],strategies:["Chiến lược mình đã xây cho khách hàng thật","Tài liệu rút gọn, đã ẩn danh dữ liệu."],certs:["Không ngừng học để theo kịp ngành",""]},
@@ -35,7 +35,7 @@ export const C={
  certs:[["Google Analytics","#"],["Meta Certified Digital Marketing Associate","#"],["HubSpot Inbound Marketing","#"],["Quản trị dự án cơ bản","#"]],
  contact:{h:"Cùng xây dựng hành trình khách hàng tiếp theo",note:"Mình đang tìm vị trí Omnichannel Marketing Lead hoặc Customer Engagement Lead trong ngành dược và công nghệ sinh học. Cũng nhận dự án tư vấn ngắn hạn.",
   phone:"+84 900 000 000",loc:"TP. Hồ Chí Minh, Việt Nam",
-  social:[{n:"LinkedIn",m:"in",u:"https://www.linkedin.com/"},{n:"Facebook",m:"f",u:"https://www.facebook.com/"},{n:"Zalo",m:"Z",u:"https://zalo.me/"},{n:"Instagram",m:"ig",u:"https://www.instagram.com/"},{n:"TikTok",m:"tt",u:"https://www.tiktok.com/"},{n:"YouTube",m:"yt",u:"https://www.youtube.com/"}]}
+  social:[{n:"LinkedIn",m:"in",u:"https://www.linkedin.com/"},{n:"Facebook",m:"f",u:"https://www.facebook.com/"},{n:"Zalo",m:"Z",u:"https://zalo.me/"},]}
 };
 /* Mỗi phần tử của CASES là một trang case study: mở bằng case.html?c=0, c=1, c=2... Sao chép một khối để thêm case mới. */
 export const CASES=[
