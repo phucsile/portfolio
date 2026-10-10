@@ -93,25 +93,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const slider = document.getElementById('caseSlider');
   if (!slider) return;
 
-  // Kiểm tra nếu là thiết bị di động thì bỏ qua hiệu ứng ép cuộn ngang để tránh lỗi chạm/click
-  const isMobile = window.innerWidth <= 960;
-  if (isMobile) return; 
-
-  // --- Logic cuộn ngang chỉ chạy trên Desktop ---
+  // 1. Chuyển đổi lăn chuột dọc thành lướt ngang mượt mà và thông minh
   slider.addEventListener('wheel', (e) => {
+    // Ưu tiên chuyển đổi deltaY thành cuộn ngang
     const scrollAmount = e.deltaY !== 0 ? e.deltaY : e.deltaX;
     const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
     const currentScroll = slider.scrollLeft;
 
+    // Kiểm tra xem đang ở điểm đầu hoặc điểm cuối của danh sách card chưa
     const isAtStart = currentScroll <= 2 && scrollAmount < 0;
     const isAtEnd = currentScroll >= maxScrollLeft - 2 && scrollAmount > 0;
 
+    // Nếu chưa chạm biên (đầu hoặc cuối), thực hiện trượt ngang và chặn cuộn dọc trang
     if (!isAtStart && !isAtEnd) {
       e.preventDefault();
       slider.scrollLeft += scrollAmount * 1.2;
     }
+    // Nếu đã trượt hết sang phải (hoặc trái cùng biên), cho phép trang tiếp tục cuộn dọc tự nhiên xuống dưới
   }, { passive: false });
 
+  // 2. Hỗ trợ nắm kéo chuột (Drag-to-Scroll)
   let isDown = false;
   let startX;
   let scrollLeft;
