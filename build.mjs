@@ -146,8 +146,38 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
 <div class="grid3">${C.skills.map(s => `<div class="box"><h3>${E(s[0])}</h3><p>${E(s[1])}</p></div>`).join("")}</div></div></section>
 <section class="sec" id="projects"><div class="wrap"><h2>${E(C.heads.projects[0])}</h2><p class="sub">${E(C.heads.projects[1])}</p>
 <div class="grid3">${C.projects.map(p => `<a class="box pcard" href="${href(CASES[p.ref])}"><div class="top"><div class="lg">${p.logo ? im(p.logo, "", 200, 200) : "Logo"}</div><span class="tg">${E(p.tag)}</span></div><h3>${E(p.t)}</h3><p>${E(p.d)}</p>${kp(p.k)}<span class="more">Xem dự án</span></a>`).join("")}</div></div></section>
-<section class="sec" id="cases"><div class="wrap"><h2>${E(C.heads.cases[0])}</h2><p class="sub">${E(C.heads.cases[1])}</p>
-<div class="grid2">${cases.map(c => `<a class="box pcard" href="${href(c)}"><div class="cimg">${c.cover ? im(c.cover, c.title, 1600, 686) : ""}</div><span class="tg">${E(c.tag)}</span><h3>${E(c.title)}</h3><p>${E(c.summary)}</p>${kp(c.kpi)}<span class="more">Đọc case study</span></a>`).join("")}</div></div></section>
+<section class="sec cases-split-sec" id="cases">
+  <div class="wrap cases-split-wrap">
+    <!-- CỘT TRÁI: Tag màu + Tiêu đề + Nút CTA -->
+    <div class="cases-left-col">
+      <span class="cases-badge">CASE STUDY NỔI BẬT</span>
+      <h2 class="cases-heading">Câu chuyện đằng sau các con số</h2>
+      <p class="sub cases-sub-text">Ba case study kể rõ bối cảnh, hành động và kết quả.</p>
+      <a class="btn fill cases-cta-btn" href="#contact">Khám phá chi tiết &rarr;</a>
+    </div>
+
+    <!-- CỘT PHẢI: Khối chứa các thẻ Card tràn ngang (Scroll/Grid) -->
+    <div class="cases-right-col">
+      <div class="cases-cards-scroll">
+        ${cases.map((c, i) => `
+          <a class="box pcard case-card-item" href="${href(c)}">
+            <div class="cimg">${c.cover ? im(c.cover, c.title, 1600, 686) : ""}</div>
+            <div class="case-card-body">
+              <span class="tg">${E(c.tag)}</span>
+              <h3>${E(c.title)}</h3>
+              <p>${E(c.summary)}</p>
+              ${kp(c.kpi)}
+              <div class="case-card-footer">
+                <span class="case-step-label">Case 0${i + 1}</span>
+                <span class="more">Đọc case study &rarr;</span>
+              </div>
+            </div>
+          </a>
+        `).join("")}
+      </div>
+    </div>
+  </div>
+</section>
 <section class="sec" id="strategies"><div class="wrap"><h2>${E(C.heads.strategies[0])}</h2><p class="sub">${E(C.heads.strategies[1])}</p>
 <div class="grid4">${C.strategies.map(s => `<a class="box" href="${E(s.href)}" target="_blank" rel="noopener"><span class="tg">${E(s.tag)}</span><h3 style="margin:.4rem 0">${E(s.t)}</h3><p>${E(s.d)}</p></a>`).join("")}</div></div></section>
 <section class="sec" id="certs"><div class="wrap"><h2>${E(C.heads.certs[0])}</h2>${C.heads.certs[1] ? `<p class="sub">${E(C.heads.certs[1])}</p>` : ""}<div class="certs">${C.certs.map(c => `<a href="${E(c[1])}">${E(c[0])}</a>`).join("")}</div></div></section>
