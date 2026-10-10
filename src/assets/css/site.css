@@ -469,53 +469,52 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 
 .exp-row {
     display: grid;
-    grid-template-columns: 1.3fr 1.2fr auto;
-    gap: 1rem;
-    padding: 0.9rem 0;
+    grid-template-columns: 1.4fr 1.2fr auto;
+    gap: 1.2rem;
+    padding: 0.95rem 1rem; /* Thu hẹp padding dọc một chút cho gọn */
+    margin: 0 -1rem;
     border-bottom: 1px solid #E2E8F0;
+    border-radius: 10px;
     align-items: center;
-    font-size: 0.92rem;
+    font-size: 0.95rem; /* Điều chỉnh kích thước chữ tổng thể vừa vặn hơn (từ 1.08rem xuống 0.95rem) */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
 }
 
 .exp-row:last-child {
     border-bottom: none;
 }
 
+/* Hiệu ứng phóng to khi rê chuột */
+.exp-row:hover {
+    background: rgba(255, 255, 255, 0.85);
+    transform: scale(1.025) translateX(5px); /* Phóng to nhẹ nhàng và tinh tế hơn */
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+    border-bottom-color: transparent;
+}
+
 .exp-role {
     font-weight: 700;
     color: #0F172A;
+    font-size: 1rem; /* Kích thước tên chức vụ vừa phải, không bị quá khổ */
+    transition: color 0.25s ease;
+}
+
+.exp-row:hover .exp-role {
+    color: #C53030; 
 }
 
 .exp-company {
-    color: #64748B;
+    color: #475569;
+    font-size: 0.92rem;
 }
 
 .exp-time {
     text-align: right;
-    font-weight: 600;
-    color: #475569;
+    font-weight: 700;
+    color: #334155;
+    font-size: 0.92rem;
     white-space: nowrap;
-}
-
-/* Responsive cho thiết bị di động */
-@media (max-width: 860px) {
-    .about-grid-layout {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .about-photo-card {
-        transform: none;
-    }
-
-    .exp-row {
-        grid-template-columns: 1fr;
-        gap: 0.2rem;
-    }
-
-    .exp-time {
-        text-align: left;
-    }
 }
 /* ===== Layout Case Study cuộn ngang tự nhiên mượt mà ===== */
 .cases-split-sec {
