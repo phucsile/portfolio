@@ -54,6 +54,7 @@ const head = ({ title, desc, path, type = "website", img = C.ogImage, ld, noinde
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${E(title)}"><meta name="twitter:description" content="${E(desc)}"><meta name="twitter:image" content="${abs(img)}">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">${posts.length ? `\n<link rel="alternate" type="application/rss+xml" title="${E(C.name)}" href="/feed.xml">` : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/site.css">
 ${ld ? `<script type="application/ld+json">${json({ "@context": "https://schema.org", "@graph": ld })}</script>` : ""}</head>`;
 const im = (src, alt, w, h, hero) => `<img src="${E(src)}" alt="${E(alt)}" width="${w}" height="${h}"${hero ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async">`;
