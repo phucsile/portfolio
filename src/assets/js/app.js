@@ -31,13 +31,61 @@ if(d.body.classList.contains("protect")){
  ["contextmenu","copy","cut","dragstart","selectstart"].forEach(x=>d.addEventListener(x,e=>{if(!free(e))e.preventDefault()}));
  d.addEventListener("keydown",e=>{const k=e.key.toLowerCase(),c=e.ctrlKey||e.metaKey;if(k==="f12"||(c&&e.shiftKey&&"ijc".includes(k))||(c&&"usp".includes(k)))e.preventDefault()})}
 })();
-// Bấm nút mũi tên để cuộn qua Case Study tiếp theo
 document.addEventListener('DOMContentLoaded', () => {
-  const btn = document.getElementById('caseScrollNext');
   const slider = document.getElementById('caseSlider');
-  if (btn && slider) {
-    btn.addEventListener('click', () => {
-      slider.scrollBy({ left: 480, behavior: 'smooth' });
+  const btnNext = document.getElementById('caseScrollNext');
+  const btnPrev = document.getElementById('caseScrollPrev');
+
+  if (!slider) return;
+
+  // 1. Xử lý nút bấm điều hướng
+  const updateButtons = () => {
+    if (!btnPrev || !btnNext) return;
+    const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+    btnPrev.disabled = slider.scrollLeft <= 10;
+    btnNext.disabled = slider.scrollLeft >= maxScrollLeft - 10;
+  };
+
+  if (btnNext) {
+    btnNext.addEventListener('click', () => {
+      slider.scrollBy({ left: 440, behavior: 'smooth' });
     });
   }
+
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+      slider.scrollBy({ left: -440, behavior: 'smooth' });
+    });
+  }
+
+  slider.addEventListener('scroll', updateButtons);
+  updateButtons();
+
+  // 2. Xử lý Nắm kéo chuột (Drag-to-Scroll)
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.8; // Tốc độ lướt
+    slider.scrollLeft = scrollLeft - walk;
+  });
 });
