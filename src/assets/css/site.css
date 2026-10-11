@@ -836,34 +836,32 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 .float-anim-2 { animation: floatReverse 4s ease-in-out infinite 0.3s; }
 .float-anim-3 { animation: floatGentle 6s ease-in-out infinite 0.7s; }
 
-/* ==========================================================================
-   TỐI ƯU GIAO DIỆN ABOUT & KINH NGHIỆM TRÊN MOBILE (DƯỚI 960PX)
-   ========================================================================== */
+/* ===== Tối ưu hóa tuyệt đối giao diện About trên Mobile (Dưới 960px) ===== */
 @media (max-width: 960px) {
-
-    /* 1. Đưa toàn bộ cấu trúc About về 1 cột dọc thẳng hàng */
+    /* 1. Sắp xếp lại bố cục khối About thành một cột duy nhất theo thứ tự: Ảnh/Tên -> Mô tả -> Bảng kinh nghiệm */
     .about-split-wrap {
         display: flex !important;
         flex-direction: column !important;
         gap: 2rem !important;
-        align-items: flex-start !important;
+        align-items: center !important;
     }
 
-    /* 2. Căn chỉnh khối Ảnh đại diện & Tên tác giả gọn gàng ở trên cùng */
+    /* Đưa ảnh đại diện và tên lên trên cùng, căn giữa gọn gàng */
     .about-profile-col {
         display: flex !important;
-        flex-direction: row !important;
+        flex-direction: row !important; /* Xếp ngang ảnh và tên cho gọn gàng hoặc giữ khối cột cân đối */
         align-items: center !important;
         gap: 1.2rem !important;
+        text-align: left !important;
         width: 100% !important;
         margin-bottom: 0.5rem;
     }
 
-    /* Thu nhỏ ảnh đại diện vừa vặn dạng tròn */
+    /* Thu nhỏ kích thước ảnh đại diện trên mobile vừa phải */
     .about-profile-col img, 
     .about-avatar {
-        width: 75px !important;
-        height: 75px !important;
+        width: 80px !important;
+        height: 80px !important;
         border-radius: 50% !important;
         object-fit: cover !important;
         flex-shrink: 0;
@@ -871,19 +869,18 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 
     .about-profile-col .author-name,
     .about-profile-col h3 {
-        font-size: 1.2rem !important;
+        font-size: 1.25rem !important;
         margin: 0 !important;
-        line-height: 1.3;
     }
 
     .about-profile-col .author-title,
     .about-profile-col p {
         font-size: 0.88rem !important;
         color: var(--mut);
-        margin-top: 0.2rem !important;
+        margin: 0 !important;
     }
 
-    /* 3. Đoạn văn bản giới thiệu trải rộng full chiều ngang màn hình */
+    /* 2. Phần đoạn văn bản mô tả giới thiệu */
     .about-desc-col, 
     .about-text-content {
         width: 100% !important;
@@ -892,20 +889,20 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
         text-align: left !important;
     }
 
-    /* 4. Chuyển bảng kinh nghiệm thành dạng thẻ Card giúp chữ KHÔNG bị bẻ dòng */
+    /* 3. Tối ưu bảng kinh nghiệm trên mobile: Chuyển sang dạng card dọc để không bị bẻ chữ */
     .about-exp-table {
         width: 100% !important;
         display: flex !important;
         flex-direction: column !important;
-        gap: 0.85rem !important;
+        gap: 1rem !important;
     }
 
     .exp-row {
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-start !important;
-        gap: 0.35rem !important;
-        padding: 1rem 1.1rem !important;
+        gap: 0.4rem !important;
+        padding: 1rem !important;
         background: #FFFFFF !important;
         border: 1px solid rgba(15, 23, 42, 0.08) !important;
         border-radius: 14px !important;
@@ -913,23 +910,33 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
         box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
     }
 
-    /* Tên chức vụ (Role) nổi bật ở dòng 1 */
+    /* Tên vị trí công việc (Role) */
     .exp-role {
-        font-size: 1.02rem !important;
+        font-size: 1.05rem !important;
         font-weight: 700 !important;
         color: #0F172A;
     }
 
-    /* Tên công ty & Thời gian hiển thị gọn gàng ở dòng 2 */
-    .exp-company {
+    /* Tên công ty và mốc thời gian hiển thị cùng một hàng nhỏ phía dưới */
+    .exp-company-time {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
         font-size: 0.88rem !important;
+        color: var(--mut);
+        border-top: 1px solid rgba(15, 23, 42, 0.05);
+        padding-top: 0.5rem;
+        margin-top: 0.2rem;
+    }
+
+    .exp-company {
         color: #475569;
+        font-weight: 500;
     }
 
     .exp-time {
-        font-size: 0.85rem !important;
+        text-align: right !important;
         font-weight: 600 !important;
-        color: #C53030 !important; /* Điểm nhấn màu đỏ cho mốc thời gian */
-        text-align: left !important;
+        color: #C53030 !important; /* Tô điểm màu đỏ nhận diện cho mốc thời gian */
     }
 }
