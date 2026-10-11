@@ -836,107 +836,136 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 .float-anim-2 { animation: floatReverse 4s ease-in-out infinite 0.3s; }
 .float-anim-3 { animation: floatGentle 6s ease-in-out infinite 0.7s; }
 
-/* ===== Tối ưu hóa tuyệt đối giao diện About trên Mobile (Dưới 960px) ===== */
+/* ==========================================================================
+   TỐI ƯU GIAO DIỆN MOBILE CHUẨN CÂN ĐỐI (DƯỚI 960PX)
+   ========================================================================== */
 @media (max-width: 960px) {
-    /* 1. Sắp xếp lại bố cục khối About thành một cột duy nhất theo thứ tự: Ảnh/Tên -> Mô tả -> Bảng kinh nghiệm */
+
+    /* --- 1. SỬA CHỖ KHỐI ABOUT & BẢNG KINH NGHIỆM --- */
     .about-split-wrap {
         display: flex !important;
         flex-direction: column !important;
-        gap: 2rem !important;
-        align-items: center !important;
+        gap: 1.8rem !important;
+        padding: 0 !important;
+        width: 100% !important;
     }
 
-    /* Đưa ảnh đại diện và tên lên trên cùng, căn giữa gọn gàng */
+    /* Đưa thông tin tác giả lên trên cùng, thẳng hàng gọn gàng */
     .about-profile-col {
-        display: flex !important;
-        flex-direction: row !important; /* Xếp ngang ảnh và tên cho gọn gàng hoặc giữ khối cột cân đối */
-        align-items: center !important;
-        gap: 1.2rem !important;
-        text-align: left !important;
-        width: 100% !important;
-        margin-bottom: 0.5rem;
-    }
-
-    /* Thu nhỏ kích thước ảnh đại diện trên mobile vừa phải */
-    .about-profile-col img, 
-    .about-avatar {
-        width: 80px !important;
-        height: 80px !important;
-        border-radius: 50% !important;
-        object-fit: cover !important;
-        flex-shrink: 0;
-    }
-
-    .about-profile-col .author-name,
-    .about-profile-col h3 {
-        font-size: 1.25rem !important;
-        margin: 0 !important;
-    }
-
-    .about-profile-col .author-title,
-    .about-profile-col p {
-        font-size: 0.88rem !important;
-        color: var(--mut);
-        margin: 0 !important;
-    }
-
-    /* 2. Phần đoạn văn bản mô tả giới thiệu */
-    .about-desc-col, 
-    .about-text-content {
-        width: 100% !important;
-        font-size: 0.95rem !important;
-        line-height: 1.6 !important;
-        text-align: left !important;
-    }
-
-    /* 3. Tối ưu bảng kinh nghiệm trên mobile: Chuyển sang dạng card dọc để không bị bẻ chữ */
-    .about-exp-table {
         width: 100% !important;
         display: flex !important;
         flex-direction: column !important;
-        gap: 1rem !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .about-profile-col img,
+    .about-avatar {
+        width: 70px !important;
+        height: 70px !important;
+        border-radius: 50% !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    /* Loại bỏ vạch kẻ đứng gây chia đôi màn hình mobile */
+    .about-exp-table {
+        width: 100% !important;
+        border-left: none !important;
+        padding-left: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.8rem !important;
     }
 
     .exp-row {
         display: flex !important;
         flex-direction: column !important;
         align-items: flex-start !important;
-        gap: 0.4rem !important;
-        padding: 1rem !important;
+        gap: 0.35rem !important;
+        padding: 1rem 1.2rem !important;
         background: #FFFFFF !important;
         border: 1px solid rgba(15, 23, 42, 0.08) !important;
-        border-radius: 14px !important;
+        border-radius: 16px !important;
         margin: 0 !important;
-        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03) !important;
     }
 
-    /* Tên vị trí công việc (Role) */
     .exp-role {
         font-size: 1.05rem !important;
         font-weight: 700 !important;
-        color: #0F172A;
-    }
-
-    /* Tên công ty và mốc thời gian hiển thị cùng một hàng nhỏ phía dưới */
-    .exp-company-time {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        font-size: 0.88rem !important;
-        color: var(--mut);
-        border-top: 1px solid rgba(15, 23, 42, 0.05);
-        padding-top: 0.5rem;
-        margin-top: 0.2rem;
+        color: #0F172A !important;
     }
 
     .exp-company {
-        color: #475569;
-        font-weight: 500;
+        font-size: 0.9rem !important;
+        color: #475569 !important;
     }
 
     .exp-time {
-        text-align: right !important;
-        font-weight: 600 !important;
-        color: #C53030 !important; /* Tô điểm màu đỏ nhận diện cho mốc thời gian */
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        color: #C53030 !important;
+        text-align: left !important;
+    }
+
+
+    /* --- 2. SỬA CHỖ KHỐI TRÒN MANIFESTO & CUỘN NGANG --- */
+    .sec-manifesto {
+        padding: 3rem 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* Dọn dẹp tiêu đề, ẩn các hình 3D đè lên chữ */
+    .manifesto-title {
+        font-size: 1.85rem !important;
+        line-height: 1.25 !important;
+        padding: 0 1.2rem !important;
+        text-align: center !important;
+        margin-bottom: 2rem !important;
+        position: relative !important;
+        z-index: 5 !important;
+    }
+
+    .glass-shape {
+        display: none !important; /* Ẩn hình 3D che chữ trên di động */
+    }
+
+    /* Biến danh sách khối tròn thành thanh TRƯỢT NGANG (Scroll-X) mượt mà */
+    .metrics-bubble-container {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 1.2rem !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 0.8rem 1.2rem 1.5rem 1.2rem !important;
+        margin: 0 !important;
+        width: 100% !important;
+        scrollbar-width: none !important; /* Ẩn thanh cuộn trên Firefox */
+    }
+
+    .metrics-bubble-container::-webkit-scrollbar {
+        display: none !important; /* Ẩn thanh cuộn trên Chrome/Safari */
+    }
+
+    /* Định dạng từng khối tròn vừa vặn màn hình khi trượt ngang */
+    .metric-bubble {
+        flex: 0 0 200px !important; /* Cố định kích thước vừa tay lướt */
+        height: 200px !important;
+        scroll-snap-align: center !important;
+        transform: none !important; /* Loại bỏ độ lệch so le của PC */
+        margin: 0 !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    .metric-bubble .num {
+        font-size: 2.2rem !important;
+    }
+
+    .metric-bubble .desc {
+        font-size: 0.8rem !important;
     }
 }
