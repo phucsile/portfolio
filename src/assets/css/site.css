@@ -836,14 +836,100 @@ body.protect::after{content:"";position:fixed;inset:0;pointer-events:none;z-inde
 .float-anim-2 { animation: floatReverse 4s ease-in-out infinite 0.3s; }
 .float-anim-3 { animation: floatGentle 6s ease-in-out infinite 0.7s; }
 
-/* Responsive cho thiết bị di động */
-@media (max-width: 900px) {
-    .metrics-bubble-container {
-        flex-direction: column;
-        gap: 1.5rem;
+/* ==========================================================================
+   TỐI ƯU GIAO DIỆN ABOUT & KINH NGHIỆM TRÊN MOBILE (DƯỚI 960PX)
+   ========================================================================== */
+@media (max-width: 960px) {
+
+    /* 1. Đưa toàn bộ cấu trúc About về 1 cột dọc thẳng hàng */
+    .about-split-wrap {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        align-items: flex-start !important;
     }
-    .metric-bubble {
-        transform: none !important;
+
+    /* 2. Căn chỉnh khối Ảnh đại diện & Tên tác giả gọn gàng ở trên cùng */
+    .about-profile-col {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 1.2rem !important;
+        width: 100% !important;
+        margin-bottom: 0.5rem;
     }
-    .glass-shape { display: none; }
+
+    /* Thu nhỏ ảnh đại diện vừa vặn dạng tròn */
+    .about-profile-col img, 
+    .about-avatar {
+        width: 75px !important;
+        height: 75px !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
+        flex-shrink: 0;
+    }
+
+    .about-profile-col .author-name,
+    .about-profile-col h3 {
+        font-size: 1.2rem !important;
+        margin: 0 !important;
+        line-height: 1.3;
+    }
+
+    .about-profile-col .author-title,
+    .about-profile-col p {
+        font-size: 0.88rem !important;
+        color: var(--mut);
+        margin-top: 0.2rem !important;
+    }
+
+    /* 3. Đoạn văn bản giới thiệu trải rộng full chiều ngang màn hình */
+    .about-desc-col, 
+    .about-text-content {
+        width: 100% !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+        text-align: left !important;
+    }
+
+    /* 4. Chuyển bảng kinh nghiệm thành dạng thẻ Card giúp chữ KHÔNG bị bẻ dòng */
+    .about-exp-table {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.85rem !important;
+    }
+
+    .exp-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.35rem !important;
+        padding: 1rem 1.1rem !important;
+        background: #FFFFFF !important;
+        border: 1px solid rgba(15, 23, 42, 0.08) !important;
+        border-radius: 14px !important;
+        margin: 0 !important;
+        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.03);
+    }
+
+    /* Tên chức vụ (Role) nổi bật ở dòng 1 */
+    .exp-role {
+        font-size: 1.02rem !important;
+        font-weight: 700 !important;
+        color: #0F172A;
+    }
+
+    /* Tên công ty & Thời gian hiển thị gọn gàng ở dòng 2 */
+    .exp-company {
+        font-size: 0.88rem !important;
+        color: #475569;
+    }
+
+    .exp-time {
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        color: #C53030 !important; /* Điểm nhấn màu đỏ cho mốc thời gian */
+        text-align: left !important;
+    }
 }
