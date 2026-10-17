@@ -82,8 +82,7 @@ const kp = k => `<div class="kp">${k.map(x => `<div><b>${E(x[0])}</b><span>${E(x
 
 /* ---------- trang chủ ---------- */
 const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop playsinline><source src="https://avuggemsmyuuhfdnuyuj.supabase.co/storage/v1/object/public/portfolio/173707-849839066_medium.mp4" type="video/mp4"></video>` : ""}
-<h1>${E(C.name)}</h1><p class="rl">${E(C.role)}</p>
-<a class="dl" href="${E(C.cv || "#contact")}"${C.cv ? " download" : ""}>Tải CV</a>
+<h1>${E(C.name)}</h1>
 <a class="sc" href="#about" aria-label="Cuộn xuống">CUỘN<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></a></section>
 <section class="about-hero" id="about">
     <div class="wrap">
