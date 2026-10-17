@@ -60,18 +60,25 @@ body>nav .wrap{max-width:1160px;margin:0 auto;padding:0 1.25rem;height:64px;disp
 .logo{flex:none;max-width:32vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:800;font-size:1.1rem}
 .menu{display:flex;align-items:center;justify-content:flex-end;gap:clamp(.9rem,1.6vw,1.6rem);margin:0;padding:0;list-style:none;font-size:.92rem;white-space:nowrap}
 .menu>li{position:relative;display:flex;align-items:center;height:64px}
-.menu>li>a:not(.btn):hover{color:var(--em)}
+/* Hover nhạt: chỉ hiện nền mờ, chữ không đổi màu. Chỉ áp cho desktop, mobile giữ danh sách dọc */
+@media(min-width:1001px){
+  .menu{gap:clamp(.1rem,.5vw,.4rem)}
+  .menu>li>a:not(.btn){padding:.4rem .8rem;border-radius:999px;color:var(--mut);transition:background .25s ease,color .25s ease}
+  .menu>li>a:not(.btn):hover,.menu>li:focus-within>a:not(.btn){background:rgba(15,23,42,.05);color:var(--tx)}
+  .menu>li>a[aria-current]:not(.btn){color:var(--tx)}
+}
 .menu .btn{padding:.5rem 1.1rem;font-size:.88rem}
 /* Nút Hợp tác: độ ưu tiên selector (0,3,0) đã đủ, không cần !important */
-.menu .btn.fill{background:var(--grad);border:0;color:#fff;box-shadow:0 4px 15px rgba(197,48,48,.3);transition:transform .25s ease,box-shadow .25s ease}
-.menu .btn.fill:hover{background:var(--grad-hover);transform:translateY(-2px);box-shadow:0 6px 20px rgba(156,66,33,.45);color:#fff}
+.menu .btn.fill{background:var(--grad);border:0;color:#fff;box-shadow:0 2px 8px rgba(197,48,48,.16);transition:filter .25s ease,box-shadow .25s ease}
+.menu .btn.fill:hover{filter:brightness(1.07);box-shadow:0 4px 12px rgba(156,66,33,.2);color:#fff}
 
 .dd{position:absolute;top:100%;left:-1rem;min-width:250px;max-width:min(330px,90vw);display:none;padding:.8rem 1rem;white-space:normal;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%);border:1px solid rgba(255,255,255,.85);border-radius:18px;box-shadow:0 22px 50px rgba(15,23,42,.14),inset 0 1px 0 #fff}
 .menu li:hover>.dd,.menu li:focus-within>.dd{display:block}
 .dd b{display:block;font-size:.78rem;color:var(--em);margin:.6rem 0 .2rem;font-weight:700}
 /* padding và margin âm đặt sẵn ở trạng thái thường để hover không làm chữ nhảy */
 .dd a{display:block;padding:.25rem 8px;margin:0 -8px;color:var(--mut);border-radius:8px;transition:background .2s,color .2s}
-.dd a:hover,.dd a[aria-current]{background:var(--grad);color:#fff}
+.dd a:hover{background:rgba(15,23,42,.05);color:var(--tx)}
+.dd a[aria-current]{background:rgba(4,120,87,.08);color:var(--em)}
 
 #burger{display:none;background:rgba(255,255,255,.6);border:1px solid var(--line);color:var(--tx);border-radius:999px;padding:.45rem 1rem;font-size:.88rem;cursor:pointer}
 @media(max-width:1000px){
