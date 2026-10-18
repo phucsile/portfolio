@@ -195,7 +195,7 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop 
     <div class="cases-left-col">
       <span class="cases-badge">CASE STUDY NỔI BẬT</span>
       <h2 class="cases-heading">Câu chuyện đằng sau các con số</h2>
-      <p class="sub cases-sub-text">Ba case study kể rõ bối cảnh, hành động và kết quả.</p>
+      <p class="sub cases-sub-text">Bốn case study kể rõ bối cảnh, hành động và kết quả.</p>
       <a class="btn fill cases-cta-btn" href="#contact">Khám phá chi tiết &rarr;</a>
     </div>
 
@@ -238,7 +238,7 @@ page("/", shell({ title: `${C.name} | ${C.role}`, desc: C.desc, path: "/", ld: [
 
 /* ---------- trang case study và dự án ---------- */
 CASES.forEach(c => {
-  const u = href(c), blk = (o, x = "") => `<section class="blk"><h2>${E(o.h)}</h2><div><p>${E(o.p)}</p>${x}</div></section>`;
+  const u = href(c), blk = (o, x = "") => `<section class="blk"><h2>${E(o.h)}</h2><div>${[].concat(o.p).map(q => `<p>${E(q)}</p>`).join("")}${x}</div></section>`;
   const pic = (s, a, w, h) => `<div class="ph has">${im(s, a, w, h)}</div>`;
   const others = CASES.filter(x => x !== c && !!x.proj === !!c.proj);
   const label = c.proj ? "Dự án" : "Case study", hub = c.proj ? "/#projects" : "/#cases";
@@ -249,7 +249,7 @@ CASES.forEach(c => {
 <div class="cover">${c.cover ? pic(c.cover, c.title, 1600, 686) : ""}</div>
 ${blk(c.ctx)}${blk(c.goal)}
 ${blk(c.sol, `<ol class="steps">${c.sol.steps.map(s => `<li><b>${E(s.h)}</b><span>${E(s.p)}</span></li>`).join("")}</ol><div class="gal">${c.sol.gallery.map((g, n) => pic(g, `${c.title} (hình ${n + 1})`, 1200, 900)).join("")}</div>`)}
-${blk(c.res, `<div class="mets">${c.res.m.map(m => `<div class="met"><i>Trước ${E(m.b)}</i><b>${E(m.a)}</b><small>${E(m.l)}</small><i>${E(m.s)}</i></div>`).join("")}</div><p class="note">${E(c.res.limit)}</p><div class="files">${c.res.files.map(f => `<a href="${E(f.url || "#")}"${f.url ? ' target="_blank" rel="noopener"' : ""}>${E(f.name)}</a>`).join("")}</div>`)}
+${blk(c.res, `<div class="mets">${c.res.m.map(m => `<div class="met">${m.b ? `<i>Trước ${E(m.b)}</i>` : ""}<b>${E(m.a)}</b><small>${E(m.l)}</small><i>${E(m.s)}</i></div>`).join("")}</div><p class="note">${E(c.res.limit)}</p><div class="files">${c.res.files.map(f => `<a href="${E(f.url || "#")}"${f.url ? ' target="_blank" rel="noopener"' : ""}>${E(f.name)}</a>`).join("")}</div>`)}
 ${blk(c.les)}
 <section class="others"><h2>${c.proj ? "Các dự án khác" : "Case study khác"}</h2><div class="og">${others.map(x => `<a class="oc" href="${href(x)}"><span class="tg">${E(x.tag)}</span><h3>${E(x.title)}</h3><p>${E(x.summary)}</p></a>`).join("")}</div></section></article>`;
   page(u, shell({ title: `${c.title} | ${C.name}`, desc: trim(c.summary), path: u, type: "article", img: c.cover || C.ogImage, nav: u, ld: [

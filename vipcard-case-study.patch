@@ -1,0 +1,109 @@
+diff --git a/build.mjs b/build.mjs
+index 089674e..232df38 100644
+--- a/build.mjs
++++ b/build.mjs
+@@ -195,7 +195,7 @@ const home = () => `<section class="hf">${C.photo ? `<video autoplay muted loop
+     <div class="cases-left-col">
+       <span class="cases-badge">CASE STUDY NỔI BẬT</span>
+       <h2 class="cases-heading">Câu chuyện đằng sau các con số</h2>
+-      <p class="sub cases-sub-text">Ba case study kể rõ bối cảnh, hành động và kết quả.</p>
++      <p class="sub cases-sub-text">Bốn case study kể rõ bối cảnh, hành động và kết quả.</p>
+       <a class="btn fill cases-cta-btn" href="#contact">Khám phá chi tiết &rarr;</a>
+     </div>
+ 
+@@ -238,7 +238,7 @@ page("/", shell({ title: `${C.name} | ${C.role}`, desc: C.desc, path: "/", ld: [
+ 
+ /* ---------- trang case study và dự án ---------- */
+ CASES.forEach(c => {
+-  const u = href(c), blk = (o, x = "") => `<section class="blk"><h2>${E(o.h)}</h2><div><p>${E(o.p)}</p>${x}</div></section>`;
++  const u = href(c), blk = (o, x = "") => `<section class="blk"><h2>${E(o.h)}</h2><div>${[].concat(o.p).map(q => `<p>${E(q)}</p>`).join("")}${x}</div></section>`;
+   const pic = (s, a, w, h) => `<div class="ph has">${im(s, a, w, h)}</div>`;
+   const others = CASES.filter(x => x !== c && !!x.proj === !!c.proj);
+   const label = c.proj ? "Dự án" : "Case study", hub = c.proj ? "/#projects" : "/#cases";
+@@ -249,7 +249,7 @@ CASES.forEach(c => {
+ <div class="cover">${c.cover ? pic(c.cover, c.title, 1600, 686) : ""}</div>
+ ${blk(c.ctx)}${blk(c.goal)}
+ ${blk(c.sol, `<ol class="steps">${c.sol.steps.map(s => `<li><b>${E(s.h)}</b><span>${E(s.p)}</span></li>`).join("")}</ol><div class="gal">${c.sol.gallery.map((g, n) => pic(g, `${c.title} (hình ${n + 1})`, 1200, 900)).join("")}</div>`)}
+-${blk(c.res, `<div class="mets">${c.res.m.map(m => `<div class="met"><i>Trước ${E(m.b)}</i><b>${E(m.a)}</b><small>${E(m.l)}</small><i>${E(m.s)}</i></div>`).join("")}</div><p class="note">${E(c.res.limit)}</p><div class="files">${c.res.files.map(f => `<a href="${E(f.url || "#")}"${f.url ? ' target="_blank" rel="noopener"' : ""}>${E(f.name)}</a>`).join("")}</div>`)}
++${blk(c.res, `<div class="mets">${c.res.m.map(m => `<div class="met">${m.b ? `<i>Trước ${E(m.b)}</i>` : ""}<b>${E(m.a)}</b><small>${E(m.l)}</small><i>${E(m.s)}</i></div>`).join("")}</div><p class="note">${E(c.res.limit)}</p><div class="files">${c.res.files.map(f => `<a href="${E(f.url || "#")}"${f.url ? ' target="_blank" rel="noopener"' : ""}>${E(f.name)}</a>`).join("")}</div>`)}
+ ${blk(c.les)}
+ <section class="others"><h2>${c.proj ? "Các dự án khác" : "Case study khác"}</h2><div class="og">${others.map(x => `<a class="oc" href="${href(x)}"><span class="tg">${E(x.tag)}</span><h3>${E(x.title)}</h3><p>${E(x.summary)}</p></a>`).join("")}</div></section></article>`;
+   page(u, shell({ title: `${c.title} | ${C.name}`, desc: trim(c.summary), path: u, type: "article", img: c.cover || C.ogImage, nav: u, ld: [
+diff --git a/content/data.mjs b/content/data.mjs
+index de60ab2..06dbdf9 100644
+--- a/content/data.mjs
++++ b/content/data.mjs
+@@ -12,7 +12,7 @@ export const C={
+  email:"lephucsinh82@gmail.com",
+  photo:"https://avuggemsmyuuhfdnuyuj.supabase.co/storage/v1/object/public/portfolio/173707-849839066_medium.mp4",
+  cv:"",
+- heads:{skills:["Chín năng lực để biến dữ liệu thành tăng trưởng","Từ hành trình khách hàng đến báo cáo cho lãnh đạo."],projects:["Những dự án mình đã triển khai","Mỗi thẻ mở thành một trang chi tiết."],cases:["Câu chuyện đằng sau các con số","Ba case study kể rõ bối cảnh, hành động và kết quả."],strategies:["Chiến lược mình đã xây cho khách hàng thật","Tài liệu rút gọn, đã ẩn danh dữ liệu."],certs:["Không ngừng học để theo kịp ngành",""]},
++ heads:{skills:["Chín năng lực để biến dữ liệu thành tăng trưởng","Từ hành trình khách hàng đến báo cáo cho lãnh đạo."],projects:["Những dự án mình đã triển khai","Mỗi thẻ mở thành một trang chi tiết."],cases:["Câu chuyện đằng sau các con số","Bốn case study kể rõ bối cảnh, hành động và kết quả."],strategies:["Chiến lược mình đã xây cho khách hàng thật","Tài liệu rút gọn, đã ẩn danh dữ liệu."],certs:["Không ngừng học để theo kịp ngành",""]},
+  about:{h:"Mình biến tín hiệu của bác sĩ và khách hàng thành hành động đo được.",p:[
+   "Hơn năm năm làm marketing trong lĩnh vực xét nghiệm gen, thiết bị y tế và phân phối B2B, mình phụ trách hành trình khách hàng từ quảng cáo đến đơn hàng.",
+   "Mình làm việc chặt chẽ với Sales, Medical, IT và đối tác bên ngoài, để mỗi chiến dịch vừa đúng quy định y khoa vừa đo được tác động kinh doanh.",
+@@ -21,12 +21,13 @@ export const C={
+   ["Next-Best-Action","Gợi ý hành động tiếp theo theo hành vi của từng nhóm bác sĩ hoặc khách hàng."],["Nội dung y khoa","Chuyển thuật ngữ chuyên môn thành lợi ích dễ hiểu, giữ độ chính xác."],["Responsible AI","Dùng GenAI có kiểm duyệt của con người và quy tắc bảo mật dữ liệu."],
+   ["Quản lý đối tác","Điều phối agency, IT và Medical bằng mục tiêu và nhịp họp rõ ràng."],["Quảng cáo trả phí","Meta, Google, TikTok với chuyển đổi đo bằng đơn hàng thật."],["Báo cáo và dashboard","Báo cáo ngắn gọn cho lãnh đạo, mỗi chỉ số có mốc so sánh."]],
+  projects:[
+-  {g:"Genetics",tag:"Xét nghiệm gen",t:"Chương trình tư vấn xét nghiệm thai kỳ",d:"Chuỗi quảng cáo và Zalo OA đưa người quan tâm đến buổi tư vấn.",k:[["+42%","Lượt đặt lịch tư vấn"],["−28%","Chi phí mỗi lead"]],logo:"/assets/img/logo-gen.svg",ref:0},
+-  {g:"Genetics",tag:"Biểu sinh da",t:"Fanpage song ngữ cho xét nghiệm biểu sinh da",d:"Chuyển thuật ngữ khoa học thành nội dung dễ hiểu bằng hai ngôn ngữ.",k:[["3x","Lượt tiếp cận tự nhiên"],["+65%","Tin nhắn quan tâm"]],logo:"/assets/img/logo-skin.svg",ref:3},
+-  {g:"MedTech",tag:"Thiết bị y tế",t:"Ra mắt thiết bị cho phòng khám",d:"Chuỗi nuôi dưỡng theo hành vi từ lần gọi đầu đến buổi demo.",k:[["120","Phòng khám đăng ký demo"],["38%","Tỷ lệ chốt sau demo"]],logo:"/assets/img/logo-med.svg",ref:1},
+-  {g:"MedTech",tag:"Công cụ nội bộ",t:"Cổng tài liệu y khoa cho đại diện",d:"Một nơi duy nhất cho tài liệu đã duyệt, giảm thời gian tìm kiếm.",k:[["−40%","Thời gian tìm tài liệu"],["92%","Đại diện dùng hằng tuần"]],logo:"/assets/img/logo-portal.svg",ref:4},
+-  {g:"B2B",tag:"Phân phối dược",t:"Chuỗi nuôi dưỡng lead cho đại lý phân phối",d:"Bảng chấm điểm lead và chuỗi chăm sóc đa kênh cho đội bán hàng.",k:[["2.1x","Lead đủ điều kiện"],["−35%","Chu kỳ chốt hợp đồng"]],logo:"/assets/img/logo-dist.svg",ref:2},
+-  {g:"B2B",tag:"Công nghiệp",t:"Website và bộ nhận diện cho doanh nghiệp công nghiệp",d:"Cấu trúc lại website quanh nhu cầu báo giá và năng lực sản xuất.",k:[["+80%","Lượt yêu cầu báo giá"],["5","Thị trường mở rộng"]],logo:"/assets/img/logo-ind.svg",ref:5}],
++  {g:"Genetics",tag:"Loyalty Program",t:"Đặc quyền VIP từ triSure NIPT",d:"Hệ sinh thái đặc quyền cho mẹ bầu, kết nối 16 thương hiệu Mẹ & Bé và Bán lẻ.",k:[["29.998","Mẹ bầu kích hoạt"],["24.212","Voucher được claim"]],logo:"/assets/img/logo-gen.svg",ref:0},
++  {g:"Genetics",tag:"Xét nghiệm gen",t:"Chương trình tư vấn xét nghiệm thai kỳ",d:"Chuỗi quảng cáo và Zalo OA đưa người quan tâm đến buổi tư vấn.",k:[["+42%","Lượt đặt lịch tư vấn"],["−28%","Chi phí mỗi lead"]],logo:"/assets/img/logo-gen.svg",ref:1},
++  {g:"Genetics",tag:"Biểu sinh da",t:"Fanpage song ngữ cho xét nghiệm biểu sinh da",d:"Chuyển thuật ngữ khoa học thành nội dung dễ hiểu bằng hai ngôn ngữ.",k:[["3x","Lượt tiếp cận tự nhiên"],["+65%","Tin nhắn quan tâm"]],logo:"/assets/img/logo-skin.svg",ref:4},
++  {g:"MedTech",tag:"Thiết bị y tế",t:"Ra mắt thiết bị cho phòng khám",d:"Chuỗi nuôi dưỡng theo hành vi từ lần gọi đầu đến buổi demo.",k:[["120","Phòng khám đăng ký demo"],["38%","Tỷ lệ chốt sau demo"]],logo:"/assets/img/logo-med.svg",ref:2},
++  {g:"MedTech",tag:"Công cụ nội bộ",t:"Cổng tài liệu y khoa cho đại diện",d:"Một nơi duy nhất cho tài liệu đã duyệt, giảm thời gian tìm kiếm.",k:[["−40%","Thời gian tìm tài liệu"],["92%","Đại diện dùng hằng tuần"]],logo:"/assets/img/logo-portal.svg",ref:5},
++  {g:"B2B",tag:"Phân phối dược",t:"Chuỗi nuôi dưỡng lead cho đại lý phân phối",d:"Bảng chấm điểm lead và chuỗi chăm sóc đa kênh cho đội bán hàng.",k:[["2.1x","Lead đủ điều kiện"],["−35%","Chu kỳ chốt hợp đồng"]],logo:"/assets/img/logo-dist.svg",ref:3},
++  {g:"B2B",tag:"Công nghiệp",t:"Website và bộ nhận diện cho doanh nghiệp công nghiệp",d:"Cấu trúc lại website quanh nhu cầu báo giá và năng lực sản xuất.",k:[["+80%","Lượt yêu cầu báo giá"],["5","Thị trường mở rộng"]],logo:"/assets/img/logo-ind.svg",ref:6}],
+  strategies:[
+   {tag:"Genetics",t:"Chiến lược nội dung xét nghiệm gen",d:"Trụ cột nội dung, lịch đăng và quy trình duyệt y khoa.",href:"#"},
+   {tag:"MedTech",t:"Kế hoạch ra mắt thiết bị",d:"Lộ trình từ nhận biết đến demo, ngân sách theo giai đoạn.",href:"#"},
+@@ -39,6 +40,20 @@ export const C={
+ };
+ /* Mỗi phần tử của CASES là một trang case study: mở bằng case.html?c=0, c=1, c=2... Sao chép một khối để thêm case mới. */
+ export const CASES=[
++{slug:"vipcard-trisure-nipt",tag:"Genetics",title:"Đặc quyền VIP từ triSure NIPT: biến một xét nghiệm thành hành trình chăm sóc suốt thai kỳ",
++ summary:"Xét nghiệm y khoa thường chỉ là dịch vụ mua một lần. VIPCard Loyalty Program kết nối 16 thương hiệu Mẹ & Bé và Bán lẻ để kéo dài hành trình chăm sóc, từ lúc mang thai đến khi sinh nở.",
++ kpi:[["158.377","Mẹ bầu tham gia VIP Card"],["29.998","Mẹ bầu kích hoạt tài khoản"],["24.212","Voucher được claim"]],
++ meta:[["Vai trò","Digital Strategist, thiết kế và vận hành chương trình"],["Thời gian","15/04/2025 đến 28/02/2026"],["Kênh","Landing page, mã QR, mạng lưới đối tác"],["Phối hợp","Sales, CS, IT, Y khoa, 15 thương hiệu đối tác"]],
++ cover:"/assets/img/vipcard-cover.svg",
++ ctx:{h:"Xét nghiệm y khoa thường chỉ là dịch vụ mua một lần, nên thương hiệu mất liên hệ ngay khi trả kết quả",p:["triSure NIPT là xét nghiệm sàng lọc trước sinh hàng đầu của Gene Solutions. Nhưng khi đã có kết quả, mẹ bầu không còn nhiều lý do để quay lại với thương hiệu.","Bài toán gồm ba phần: kéo dài vòng đời giá trị khách hàng, tăng gắn kết thương hiệu, và tạo động lực để các phòng khám OB-GYN và bác sĩ ưu tiên giới thiệu triSure NIPT so với đối thủ trên thị trường."]},
++ goal:{h:"Mục tiêu là đạt trên 10K mẹ bầu kích hoạt tài khoản VIP Card và biến chương trình thành lý do để chọn triSure NIPT",p:["Chiến dịch chạy từ 15/04/2025 đến 28/02/2026 với mục tiêu đạt trên 10K lượt kích hoạt.","Song song, xây một mạng lưới đặc quyền gồm 16 thương hiệu ngành Mẹ & Bé và Bán lẻ, làm nền cho các chương trình loyalty dài hạn."]},
++ sol:{h:"Một hệ sinh thái đặc quyền cho mẹ bầu từ lúc mang thai đến khi sinh nở, mở bằng ba bước trên điện thoại",p:["Mình thiết kế và vận hành trọn gói VIPCard Loyalty Program, từ concept UI/UX của landing page vipcardtrisurenipt.genesolutions.vn (ưu tiên di động, tone màu ấm áp và đáng tin cậy) đến cơ chế phân phối voucher."],
++  steps:[{h:"Quét QR và đăng ký tài khoản",p:"Mẹ bầu quét mã QR để vào landing page, rồi tạo tài khoản thành viên bằng thao tác đăng ký ngắn."},{h:"Xác thực bằng mã labcode",p:"Tài khoản được xác thực khi mẹ bầu nhập đúng mã labcode của lần xét nghiệm đã thực hiện, nên đặc quyền chỉ dành cho khách hàng thật của triSure NIPT."},{h:"Chọn thương hiệu để nhận voucher",p:"Mẹ bầu chọn các nhãn hàng và thương hiệu yêu thích trong mạng lưới 16 thương hiệu để nhận voucher."}],
++  gallery:["/assets/img/vipcard-flow.svg","/assets/img/vipcard-funnel.svg"]},
++ res:{h:"Gần 30.000 mẹ bầu kích hoạt tài khoản và hơn 24.000 voucher được claim",p:["Chương trình thu hút 158.377 mẹ bầu tham gia trên 7 khu vực. Trong đó 10.508 mẹ bầu đã đổi voucher, tạo ra 24.212 lượt claim, và mạng lưới co-marketing trở thành nền tảng cho các chiến dịch loyalty dài hạn."],
++  m:[{b:"",a:"158.377",l:"Mẹ bầu tham gia VIP Card",s:"Toàn chương trình, 7 khu vực"},{b:"",a:"29.998",l:"Mẹ bầu kích hoạt tài khoản",s:"Đăng ký tài khoản VIP Card"},{b:"",a:"10.508",l:"Mẹ bầu đã đổi voucher",s:"24.212 voucher được claim"}],
++  limit:"Số liệu tính theo tài khoản VIP Card. Chưa tách được tác động riêng của chương trình lên sản lượng mẫu xét nghiệm tại từng phòng khám.",files:[]},
++ les:{h:"Kích hoạt chỉ là điểm bắt đầu, giá trị thật nằm ở bước mẹ bầu dùng ưu đãi",p:["Khoảng 19% mẹ bầu tham gia kích hoạt tài khoản, và khoảng 35% mẹ bầu đã kích hoạt đi tiếp đến bước đổi voucher. Khoảng cách này là cơ hội cho các nhắc nhở theo hành vi ở giai đoạn sau.","Tỷ lệ mẹ bầu đổi voucher trên tổng số mẹ làm xét nghiệm dao động từ khoảng 2,5% đến 5,6% giữa các khu vực, nên danh mục voucher cần được cá nhân hóa theo vùng.","Ở giai đoạn đầu, gần một phần tư lượt đăng ký chưa đủ điều kiện xác thực. Nếu làm lại, mình sẽ thiết kế sẵn lớp hỗ trợ ngoại lệ ngay từ ngày ra mắt."]}},
+ {slug:"truy-vet-doanh-thu",tag:"Genetics",title:"Từ ba hệ thống rời rạc đến một chuỗi doanh thu truy vết được",
+  summary:"Doanh thu từ marketing trước đây chỉ truy vết được một phần vì dữ liệu nằm ở ba nơi. Sau khi thống nhất mã nguồn khách hàng, phần lớn đơn hàng gắn được về chiến dịch gốc.",
+  kpi:[["+46%","Đơn hàng truy vết được, so với quý trước"],["−31%","Chi phí mỗi đơn hàng sau 6 tháng"]],
+diff --git a/src/assets/img/vipcard-cover.svg b/src/assets/img/vipcard-cover.svg
+new file mode 100644
+index 0000000..444fd21
+--- /dev/null
++++ b/src/assets/img/vipcard-cover.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 686" width="1600" height="686" font-family="Inter,Arial,Helvetica,sans-serif" role="img" aria-label="Đặc quyền VIP từ triSure NIPT"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A0F1D"/><stop offset=".6" stop-color="#0F2F3F"/><stop offset="1" stop-color="#0D9488"/></linearGradient></defs><rect width="1600" height="686" fill="url(#g)"/><circle cx="1380" cy="110" r="190" fill="#10B981" opacity=".16"/><circle cx="160" cy="620" r="150" fill="#5EEAD4" opacity=".1"/><text x="100" y="270" font-size="80" font-weight="800" fill="#fff">Đặc quyền VIP</text><text x="100" y="370" font-size="80" font-weight="800" fill="#10B981">triSure NIPT</text><text x="100" y="450" font-size="28" fill="#fff" opacity=".72">VIPCard Loyalty Program, Gene Solutions</text><g transform="translate(980,150)"><rect width="480" height="300" rx="34" fill="#fff" opacity=".12" stroke="#fff" stroke-opacity=".45" stroke-width="2"/><rect x="36" y="40" width="64" height="48" rx="10" fill="#F59E0B" opacity=".95"/><text x="36" y="170" font-size="40" font-weight="800" fill="#fff">VIP Card</text><text x="36" y="215" font-size="22" fill="#fff" opacity=".7">triSure NIPT</text><circle cx="400" cy="250" r="22" fill="#10B981" opacity=".9"/><circle cx="430" cy="250" r="22" fill="#5EEAD4" opacity=".9"/></g><g font-size="22" font-weight="700" fill="#fff"><rect x="980" y="490" width="210" height="48" rx="24" fill="#fff" opacity=".14"/><text x="1006" y="522">16 thương hiệu</text><rect x="1206" y="490" width="130" height="48" rx="24" fill="#fff" opacity=".14"/><text x="1232" y="522">7 vùng</text></g></svg>
+\ No newline at end of file
+diff --git a/src/assets/img/vipcard-flow.svg b/src/assets/img/vipcard-flow.svg
+new file mode 100644
+index 0000000..3c512e5
+--- /dev/null
++++ b/src/assets/img/vipcard-flow.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" font-family="Inter,Arial,Helvetica,sans-serif" role="img" aria-label="Ba bước từ mã QR đến voucher"><rect width="1200" height="900" fill="#F8FAFC"/><rect width="1200" height="12" fill="#10B981"/><text x="60" y="130" font-size="46" font-weight="800" fill="#0F172A">Ba bước từ mã QR đến voucher</text><text x="60" y="185" font-size="26" fill="#475569">Luồng nhận đặc quyền trên điện thoại của mẹ bầu</text><rect x="60" y="330" width="320" height="260" rx="30" fill="#fff" stroke="#CBD5E1" stroke-width="3"/><circle cx="110" cy="385" r="26" fill="#10B981"/><text x="110" y="394" text-anchor="middle" font-size="26" font-weight="800" fill="#04130D">1</text><text x="96" y="470" font-size="30" font-weight="800" fill="#0F172A">Quét QR và</text><text x="96" y="512" font-size="30" font-weight="800" fill="#0F172A">đăng ký tài khoản</text><path d="M388 460 L424 460" stroke="#0D9488" stroke-width="5" stroke-linecap="round"/><path d="M414 448 L426 460 L414 472" fill="none" stroke="#0D9488" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="440" y="330" width="320" height="260" rx="30" fill="#fff" stroke="#CBD5E1" stroke-width="3"/><circle cx="490" cy="385" r="26" fill="#10B981"/><text x="490" y="394" text-anchor="middle" font-size="26" font-weight="800" fill="#04130D">2</text><text x="476" y="470" font-size="30" font-weight="800" fill="#0F172A">Xác thực bằng</text><text x="476" y="512" font-size="30" font-weight="800" fill="#0F172A">mã labcode</text><path d="M768 460 L804 460" stroke="#0D9488" stroke-width="5" stroke-linecap="round"/><path d="M794 448 L806 460 L794 472" fill="none" stroke="#0D9488" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="820" y="330" width="320" height="260" rx="30" fill="#10B981" stroke="#10B981" stroke-width="3"/><circle cx="870" cy="385" r="26" fill="#04130D"/><text x="870" y="394" text-anchor="middle" font-size="26" font-weight="800" fill="#10B981">3</text><text x="856" y="470" font-size="30" font-weight="800" fill="#04130D">Chọn thương hiệu</text><text x="856" y="512" font-size="30" font-weight="800" fill="#04130D">nhận voucher</text><text x="60" y="700" font-size="24" fill="#475569">Mã labcode của lần xét nghiệm là điều kiện để kích hoạt tài khoản.</text><text x="60" y="740" font-size="24" fill="#475569">Mỗi mẹ bầu chọn các nhãn hàng mình yêu thích trong mạng lưới 16 thương hiệu.</text></svg>
+\ No newline at end of file
+diff --git a/src/assets/img/vipcard-funnel.svg b/src/assets/img/vipcard-funnel.svg
+new file mode 100644
+index 0000000..6fa44a3
+--- /dev/null
++++ b/src/assets/img/vipcard-funnel.svg
+@@ -0,0 +1 @@
++<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" font-family="Inter,Arial,Helvetica,sans-serif" role="img" aria-label="Phễu VIP Card"><rect width="1200" height="900" fill="#fff"/><text x="60" y="110" font-size="44" font-weight="800" fill="#0F172A">Phễu VIP Card</text><text x="60" y="160" font-size="24" fill="#475569">Từ tham gia đến đổi voucher, số mẹ bầu theo từng tầng</text><text x="60" y="300" font-size="26" fill="#0F172A">Mẹ bầu tham gia VIP Card</text><rect x="60" y="320" width="760" height="64" rx="14" fill="#CBD5E1"/><text x="838" y="364" font-size="34" font-weight="800" fill="#047857">158.377</text><text x="60" y="470" font-size="26" fill="#0F172A">Mẹ bầu kích hoạt tài khoản</text><rect x="60" y="490" width="144" height="64" rx="14" fill="#5EEAD4"/><text x="222" y="534" font-size="34" font-weight="800" fill="#047857">29.998</text><text x="60" y="640" font-size="26" fill="#0F172A">Mẹ bầu đã đổi voucher</text><rect x="60" y="660" width="50" height="64" rx="14" fill="#10B981"/><text x="128" y="704" font-size="34" font-weight="800" fill="#047857">10.508</text><text x="60" y="840" font-size="24" fill="#475569">24.212 voucher được claim, trung bình khoảng 2,3 voucher cho mỗi mẹ bầu đổi quà.</text></svg>
+\ No newline at end of file
